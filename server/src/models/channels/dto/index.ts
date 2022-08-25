@@ -1,0 +1,1 @@
+export { UpdateChannelDto } from './update-channel.dto'
