@@ -1,0 +1,73 @@
+$inner-spacing-x: 0.7em;
+$inner-spacing-y: 0.6em;
+$font-size: 0.6em;
+
+.field {
+  @apply relative w-full flex items-center border-brand-primary border-opacity-0 bg-primary-800 transition-colors;
+  padding: $inner-spacing-y $inner-spacing-x;
+  color: white;
+  border-radius: 0.16em;
+  border-width: 0.16em;
+  
+  &:hover,
+  &:focus {
+    @apply border-brand-primary border-opacity-100 cursor-text;
+
+    .icon {
+      @apply text-brand-primary;
+    }
+  }
+
+  .icon {
+    @apply transition-colors;
+    font-size: $font-size;
+    margin-right: $inner-spacing-x;
+  }
+  
+  .input {
+    @apply w-full outline-none bg-inherit;
+    font-size: $font-size;
+  }
+  
+  
+  &--required {
+    .title::after {
+      @apply text-error;
+      content: '*';
+      display: block;
+      position: absolute;
+      right: -0.75em;
+      top: -0.55em;
+    }
+  }
+
+  &--error {
+    @apply border-error;
+    .icon {
+      @apply text-error;
+    }
+
+    &:hover,
+    &:focus {
+      @apply border-error;
+      .icon {
+        @apply text-error;  
+      }
+    }
+  }
+
+  &--success {
+    @apply border-green-300;
+    .icon {
+      @apply text-green-300;
+    }
+
+    &:hover,
+    &:focus {
+      @apply border-green-300;
+      .icon {
+        @apply text-green-300;  
+      }
+    }
+  }
+}

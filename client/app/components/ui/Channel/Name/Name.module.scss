@@ -1,0 +1,14 @@
+.content {
+  @apply flex items-center;
+
+  .name {
+    @apply text-white font-bold;
+    letter-spacing: 0.06em;
+  }
+
+  .verification_icon {
+    @apply text-blue-400;
+    font-size: 1.1em;
+    margin-left: 0.3em;
+  }
+}

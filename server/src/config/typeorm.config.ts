@@ -2,7 +2,7 @@ import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
 import { Session } from "models/sessions/entities";
 import { Channel, Subscription } from "models/channels/entities";
-import { Video } from "models/videos/entities";
+import { Video, Likes } from "models/videos/entities";
 import { Comment } from "models/comments/entities";
 
 export const getTypeormConfig = (): TypeOrmModuleOptions => ({
@@ -15,7 +15,7 @@ export const getTypeormConfig = (): TypeOrmModuleOptions => ({
   entities: [
     Session,
     Channel, Subscription,
-    Video, 
+    Video, Likes,
     Comment
   ],
   synchronize: true,

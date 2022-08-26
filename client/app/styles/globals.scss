@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'react-redux-toastr/src/styles/index'; // react-toastr
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+
+
+body {
+  box-sizing: border-box;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+body {
+  @apply bg-primary-1000;
+  font-family: 'Inter', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+// ? Libs restyle
+.redux-toastr {
+  .toastr {
+    @apply shadow;
+    background-color: #272532;
+
+    &.rrt-success {
+      background-color: #56db8d;
+    }
+
+    &.rrt-warning {
+      background-color: #eaa84c;
+    }
+
+    &.rrt-info {
+      background-color: #4b85e7;
+    }
+
+    &.rrt-error {
+      background-color: #e94d4d;
+    }
+  }
+}

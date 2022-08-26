@@ -1,25 +1,65 @@
-import { Controller, Get, Session, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Put, Session, UseGuards, ValidationPipe } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { AuthGuard } from 'models/auth/guards';
 import { SessionApp } from 'models/sessions/sessions.types';
+
+import { UpdateChannelDto } from './dto';
+import { Channel } from './entities';
 import { ChannelsService } from './channels.service';
 
+@ApiTags('Channels')
 @Controller('channels')
 export class ChannelsController {
   constructor(private readonly channelsService: ChannelsService) {}
 
   
+  // TODO: Roles guard
   @Get()
-  @UseGuards(AuthGuard)
+  @ApiOperation({ summary: "Получить всех пользоватлей. (По сути для админки и SSG)" })
   async getAll() {
     return await this.channelsService.findAll()
   }
 
-  @Get()
+  // Get someone channel 🍈
+  @Get('id/:channelId')
+  @ApiOperation({ summary: "Получить публичную информацию о чьем-либо канале." })
+  async getById(
+    @Param('channelId') id: Channel['id']
+  ) {
+    return this.channelsService.findById(id)
+  }
+
+  // Get MY channel 🐈
+  @Get('me')
   @UseGuards(AuthGuard)
-  async getChannel(
+  @ApiOperation({ summary: "Получить информацию о моём канале." })
+  async getMyChannel(
     @Session() session: SessionApp
   ) {
     return await this.channelsService.findById(session.channel.id)
   }
+
+
+  @Put('me')
+  @UseGuards(AuthGuard)
+  @ApiOperation({ summary: "Обновить информацию о моём канале." })
+  async updateChannel(
+    @Session() session: SessionApp,
+    @Body(new ValidationPipe()) dto: UpdateChannelDto
+  ) {
+    return this.channelsService.updateChannel(session.channel.id, dto)
+  }
+
+
+  @Patch('subscribe/:channelId')
+  @UseGuards(AuthGuard)
+  @ApiOperation({ summary: "Подписаться на пользователя по ID." })
+  async subscribe(
+    @Session() session: SessionApp,
+    @Param('channelId') channelId: Channel['id']
+  ) {
+    return this.channelsService.subscribe(session.channel.id, channelId)
+  }
+
 }

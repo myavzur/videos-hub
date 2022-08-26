@@ -1,0 +1,41 @@
+.comments {
+  @apply rounded-xl p-5 bg-primary-900;
+
+  &__heading {
+    @apply text-white text-tiny my-0;
+  }
+
+  &__line {
+    @apply w-full h-0.5 my-5;
+    background-color: #303241;
+  }
+
+  > p {
+    @apply text-gray-500 mb-4;
+  }
+
+  &__list {
+    max-height: 26.5rem;
+    overflow-y: scroll;
+
+    &_comment {
+      @apply text-xs pr-4;
+
+      & + & {
+        @apply mt-7;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      width: 1.6px;
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply bg-brand-primary rounded-sm;
+    }
+    
+  }
+
+  &__form {
+    @apply mt-5;
+  }
+}

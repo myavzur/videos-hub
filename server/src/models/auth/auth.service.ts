@@ -2,9 +2,9 @@ import * as bcrypt from 'bcrypt'
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { ChannelsService } from 'models/channels/channels.service';
-import { AuthDto } from './dto';
+import { RegisterDto, LoginDto } from './dto';
 import { Channel } from 'models/channels/entities';
-import { OkException } from 'helpers/exeptions';
+import { OkException } from 'utils/exeptions';
 import { SessionApp } from 'models/sessions/sessions.types';
 
 @Injectable()
@@ -13,14 +13,17 @@ export class AuthService {
     private readonly channelsService: ChannelsService
   ) {}
 
-  async signUp(session: SessionApp, dto: AuthDto) {
+  async register(session: SessionApp, dto: RegisterDto) {
+    if (dto.password !== dto.passwordConfirmation) {
+      throw new BadRequestException("Passwords don't match!")
+    }
+
     const oldChannel = await this.channelsService.findByEmail(dto.email, {shouldThrowEmptyException: false})
 
     if (oldChannel) {
       throw new BadRequestException('Channel with this email already exists!')
     }
 
-    // channelsService.createChannel
     const channel = await this.channelsService.createChannel(dto)
 
     await this.setSession(session, channel)
@@ -30,7 +33,7 @@ export class AuthService {
 
   
 
-  async signIn(session: SessionApp, dto: AuthDto) {
+  async login(session: SessionApp, dto: LoginDto) {
     const channel = await this.channelsService.findByEmailWithPassword(dto.email)
     
     const isCorrectPassword = await bcrypt.compare(dto.password, channel.password)
@@ -49,7 +52,7 @@ export class AuthService {
   
 
 
-  async signOut(session: SessionApp) {
+  async logout(session: SessionApp) {
     if (session && session?.channel?.id) {
       session.destroy(null)
 

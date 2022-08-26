@@ -1,0 +1,56 @@
+@import '@/styles/mixins.scss';
+
+.video {
+  @apply relative rounded-lg overflow-hidden;
+  background-color: #1e1f29;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+
+  &:hover,
+  &:focus 
+  {
+    .thumbnail__overlay {
+      box-shadow: 0px 0px 25px rgb(0, 0, 0, .3) inset;
+      background: rgba(14, 13, 32, 0.15);
+    }
+  }
+
+  .thumbnail {
+    @apply relative;
+    height: 14rem;
+
+    &__image {
+      @apply w-full object-cover object-center;
+    }
+
+    &__overlay {
+      @apply inner-shadow absolute w-full h-full transition-all;
+      background: rgba(14, 13, 32, .3);
+      z-index: 1;
+      
+      &_avatar {
+        @apply absolute bottom-0 right-4;
+        transform: translateY(50%);
+      }
+  
+      &_statistics {
+        @apply text-2xs absolute top-4 left-4;
+      }
+    }
+    
+  }
+
+  
+  .information {
+    @apply p-4;
+
+    &__channel_name {
+      @apply text-2xs text-gray-500;
+    }
+
+    &__name {
+      @apply text-white text-sm font-medium mt-4;
+
+      @include cut-on-line(2);
+    }
+  }
+}

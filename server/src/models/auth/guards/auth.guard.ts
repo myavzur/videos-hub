@@ -7,6 +7,6 @@ export class AuthGuard implements CanActivate {
   ): boolean | Promise<boolean> {
     const request = context.switchToHttp().getRequest();
 
-    return Boolean(request?.session?.channel?.id) // Only indificated users could attach resource
+    return Boolean(request?.session?.channel?.id) // * Only authorized users could attach requested resource
   }
 }

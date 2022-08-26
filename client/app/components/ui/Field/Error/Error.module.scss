@@ -1,0 +1,13 @@
+.error {
+  @apply w-full text-xs mb-2 text-error;
+  animation: moveFromBottomToBase .3s forwards;
+}
+
+@keyframes moveFromBottomToBase {
+  from {
+    transform: translateY(60px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,92 @@
+.layout {
+  @apply h-screen overflow-hidden flex;
+
+  &__content {
+    @apply flex items-center justify-center;
+    flex: 1;
+  }
+
+  &__preview {
+    flex: 1.5;
+    clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+    background: radial-gradient(#278BD7, #131319);
+
+    .light {
+      @apply absolute w-0 bg-brand-primary shadow-brand-primary right-0 left-0 bottom-0;
+      position: absolute;
+      top: 100vh;
+      margin: auto;
+      box-shadow: 0px 0px 15px 1px;
+
+      &_x1 {
+        animation: floatUp 4s infinite linear;
+        transform: scale(1.0);
+      }
+      &_x2 {
+        animation: floatUp 7s infinite linear;
+        transform: scale(1.6);
+        left: 15%;
+      }
+      &_x3 {
+        animation: floatUp 2.5s infinite linear;
+        transform: scale(.5);
+        left: -15%;
+      }
+      &_x4 {
+        animation: floatUp 4.5s infinite linear;
+        transform: scale(1.2);
+        left: -34%;
+      }
+      &_x5 {
+        animation: floatUp 8s infinite linear;
+        transform: scale(2.2);
+        left: -57%;
+      }
+      &_x6 {
+        animation: floatUp 3s infinite linear;
+        transform: scale(.8);
+        left: -81%;
+      }
+      &_x7 {
+        animation: floatUp 5.3s infinite linear;
+        transform: scale(3.2);
+        left: 37%;
+      }
+      &_x8 {
+        animation: floatUp 4.7s infinite linear;
+        transform: scale(1.7);
+        left: 62%;
+      }
+      &_x9 {
+        animation: floatUp 4.1s infinite linear;
+        transform: scale(0.9);
+        left: 85%;
+      }
+    }
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    top: -100vh; 
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    top: 0vh; 
+    opacity: .8;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100vh; 
+    opacity: 0;
+  }
+}

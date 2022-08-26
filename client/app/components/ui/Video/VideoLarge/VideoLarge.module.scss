@@ -1,0 +1,71 @@
+@import '@/styles/mixins.scss';
+
+.video {
+  @apply flex w-full h-full relative overflow-hidden select-none rounded-lg;
+  z-index: 0;
+
+  
+  .thumbnail {
+    @apply object-center object-cover pointer-events-none;
+  }
+  
+  .information {
+    @apply inner-shadow flex flex-col justify-between py-8 px-8 w-full h-full;
+    background: rgba(14, 13, 32, .5);
+    z-index: 1;
+    
+    // * INFOMRATION__GENERAL (top block)
+    &__general {
+      &_statistics {
+        @apply text-xs;
+      }
+
+      &_name {
+        @apply text-2xl uppercase font-bold pt-4;
+        max-width: 79%;
+
+        @include cut-on-line(2);
+      }
+
+      &_description {
+        @apply pt-4 text-xs;
+        max-width: 18rem;
+        
+        @include cut-on-line(3);
+      }
+    }
+    
+    // * INFOMRATION__AUTHOR (bottom block)
+    &__author {
+      &_present {
+        @apply uppercase text-2xs;
+        letter-spacing: 1.3px;
+      }
+      
+      &_name {
+        @apply text-xs;
+      }
+    }
+  }
+
+  // ! Modificators
+  &--portait {
+    @apply rounded-none;
+    
+    .information {
+      @apply py-12 ;
+
+      &__general {
+        &_name {
+          @apply w-full text-4xl;
+          @include cut-on-line(6)
+        }
+  
+        &_description {
+          @apply w-full;
+          @include cut-on-line(4)
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.search {
+  @apply relative w-full rounded-lg transition-colors;
+  border: 2px solid #292932;
+  background-color: #292932;
+  
+  &:hover, &:active {
+    @apply border-active;
+  }
+
+
+  &__panel {
+    @apply block relative z-search-panel;
+
+    input {
+      @apply py-1.5 px-4 block outline-none text-white transition-all;
+
+      width: calc(100% - 1.8rem);
+      background-color: inherit;
+
+      &::placeholder {
+        @apply text-primary-500;
+      }
+    }
+
+    svg {
+      @apply absolute right-4 opacity-90 w-5 h-5;
+      
+      top: 50%;
+      transform: translateY(-50%)
+    }
+  }
+
+  &__result {
+    @apply rounded-lg absolute w-full z-20 p-5 mt-2 left-0 z-search-result;
+    background: #292932;
+    min-height: 60px;
+
+    &_item {
+      & + & {
+        @apply mt-2;
+      }
+    }
+  }
+}

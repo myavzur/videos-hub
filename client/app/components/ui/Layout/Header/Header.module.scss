@@ -1,0 +1,53 @@
+.header {
+  @apply pt-6 px-6 border-b-stone-500 flex justify-between items-center mb-8;
+
+  &__search {
+    @apply w-7/12;
+  }
+
+  .info {
+    @apply flex items-center;
+
+    &__upload_video {
+      @apply text-base;
+    }
+
+    &__logout {
+      @apply text-base ml-5 transition-colors;
+
+      &:hover,
+      &:focus {
+        @apply text-brand-primary;
+      }
+    }
+  }
+
+  .links {
+    @apply flex items-center;
+
+    &__link {
+      @apply flex items-center text-sm border-transparent px-4 py-1 text-white transition-colors;
+      letter-spacing: 2px; // TODO
+
+      &:hover, 
+      &:focus {
+        @apply bg-secondary;
+      }
+
+      &:first-child {
+        @apply rounded-l-sm;
+      }
+      &:last-child {
+        @apply rounded-r-sm
+      }
+
+      &_text {
+        @apply ml-2;
+      }
+    }
+
+    &__divider {
+      @apply h-8 w-0.5 bg-secondary;
+    }
+  }
+}

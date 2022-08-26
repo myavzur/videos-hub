@@ -1,0 +1,23 @@
+.info {
+  @apply flex items-center;
+
+  &__avatar {
+    @apply self-start
+  }
+
+  &__content {
+    margin-left: 1em;
+
+    &_name {
+      @apply text-white;
+      font-size: 1em;
+    }
+
+    &_message {
+      @apply text-gray-500;
+      font-size: 1em;
+      max-width: 100%;
+      word-break: break-word;
+    }
+  }
+}

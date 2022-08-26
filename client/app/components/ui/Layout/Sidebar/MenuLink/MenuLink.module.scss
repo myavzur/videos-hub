@@ -1,0 +1,44 @@
+.menu_link {
+  @apply flex items-center text-gray-500 font-medium relative;
+
+  // * Make line behind the scene
+  &::before {
+    @apply 
+      h-full w-1 rounded-lg bg-brand-primary absolute -left-7 top-0 -translate-x-1
+      transition-all duration-500;
+    content: ''
+  }
+
+  // * Show line
+  &:hover::before {
+    @apply opacity-100 translate-x-0;
+  }
+
+
+  &__content {
+    @apply mr-4 p-2 rounded-xl;
+    background-color: #363448;
+
+    &_image {
+      @apply overflow-hidden rounded-full p-0 shadow flex items-center justify-center;
+      margin-right: 1rem !important;
+      background-color: none;
+    }
+  } 
+
+  &__title {
+    @apply font-normal;
+    // letter-spacing: 0px; // TODO
+  }
+
+
+
+  // ! Modificators
+  &--active {
+    @apply text-white;
+
+    .menu_link__content {
+      @apply bg-brand-primary shadow;
+    }
+  }
+}

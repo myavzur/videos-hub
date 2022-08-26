@@ -1,0 +1,18 @@
+.button {
+  @apply flex items-center justify-center rounded-lg p-3 text-white bg-secondary transition-colors duration-300;
+
+  & > svg {
+    @apply mr-2 text-base;
+  }
+  
+  &:hover {
+    @apply bg-opacity-100;
+  }
+
+  
+  // ! Modificators
+  &--subscribed {
+    @apply bg-gray-400;
+  }
+  
+}

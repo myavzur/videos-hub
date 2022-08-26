@@ -1,0 +1,11 @@
+.discover {
+  @apply flex gap-7 mb-10 h-96;
+
+  &__top {
+    flex: 2;
+  }
+
+  &__random {
+    flex: 1.35;
+  }
+}

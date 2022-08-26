@@ -1,0 +1,59 @@
+.form {
+  @apply flex items-center flex-col;
+  max-width: 23rem;
+
+  &__heading {
+    @apply text-4xl;
+
+    &_brand {
+      @apply text-brand-primary;
+    }
+  }
+
+  // * Inputs
+  &__fields {
+    @apply mt-7 w-full;
+  }
+
+  &__field {
+    @apply text-base mb-5;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+
+  // * Interactive
+  &__forgot_link {
+    @apply mt-7 transition-all border-b-2 border-transparent;
+
+    &:hover,
+    &:focus {
+      @apply border-white;
+    }
+  }
+
+  &__button {
+    @apply bg-primary-800 uppercase text-xs mt-7 transition-colors;
+    border-radius: 0.25em;
+    padding: 0.65em 1.3em;
+
+    &:hover,
+    &:focus {
+      @apply bg-primary-500;
+    }
+  }
+
+  &__transfer {
+    @apply mt-7;
+
+    &_link {
+      @apply text-brand-primary transition-all border-b-2 border-transparent;
+
+      &:hover,
+      &:focus {
+        @apply border-brand-primary;
+      }
+    }
+  }
+}

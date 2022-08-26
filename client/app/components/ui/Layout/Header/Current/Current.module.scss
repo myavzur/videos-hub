@@ -1,0 +1,7 @@
+.current {
+  @apply flex items-center;
+
+  &__name {
+    @apply ml-4;
+  }
+}

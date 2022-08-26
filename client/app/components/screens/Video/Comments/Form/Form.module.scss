@@ -1,0 +1,19 @@
+.form {
+  &__field {
+    @apply flex items-center text-base;
+    
+    label {
+      padding: 0.4em;
+    }
+
+    &_icon {
+      @apply px-3 text-sm bg-primary-1000 self-stretch transition-colors;
+      border-radius: 0.25em;
+
+
+      &:hover {
+        @apply bg-brand-primary;
+      }
+    }
+  }
+}

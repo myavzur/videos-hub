@@ -1,0 +1,12 @@
+.sidebar {
+  @apply py-7 px-7;
+
+  &__logo {
+    @apply text-lg font-semibold;
+    color: #fefefe
+  } 
+
+  &__copyright {
+    @apply text-xs text-gray-600 text-opacity-60;
+  }
+}

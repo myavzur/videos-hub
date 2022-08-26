@@ -1,0 +1,9 @@
+.statistics {
+  @apply flex flex-wrap items-center;
+  gap: 1em;
+
+  // ! Modificators
+  &--column {
+    @apply flex-col items-start gap-3; 
+  }
+}

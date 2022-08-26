@@ -1,26 +1,38 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "noEmit": true,
+    "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve",
+    "incremental": true,
+    // Aliases
+    "baseUrl": "./app",
+    "paths": {
+      "@/constants/*":   ["constants/*"],
+      "@/components/*": ["components/*"],
+      "@/providers/*":  ["providers/*"],
+      "@/services/*":   ["services/*"],
+      "@/assets/*":     ["assets/*"],
+      "@/types":        ["types"],
+      "@/types/*":      ["types/*"],
+      "@/hooks":        ["hooks"],
+      "@/hooks/*":      ["hooks/*"],
+      "@/utils/*":      ["utils/*"],
+      "@/helpers":      ["helpers"],
+      "@/helpers/*":    ["helpers/*"],
+      "@/store/*":      ["store/*"],
+      "@/styles/*":     ["styles/*"],
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

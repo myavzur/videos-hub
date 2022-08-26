@@ -1,41 +1,47 @@
 import { Body, Controller, Get, Post, Session, ValidationPipe } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { SessionApp } from 'models/sessions/sessions.types';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto';
+import { RegisterDto, LoginDto } from './dto';
 
+@ApiTags('Authorization')
 @Controller('auth')
 export class AuthController {
   constructor(
     private readonly authService: AuthService
   ) {}
 
-  @Post('sign-up')
-  async signUp(
+  @Post('register')
+  @ApiOperation({ summary: "Регистрация." })
+  async register(
     @Session() session: SessionApp,
-    @Body(new ValidationPipe()) dto: AuthDto
+    @Body(new ValidationPipe()) dto: RegisterDto
   ) {
-    return this.authService.signUp(session, dto)
+    return this.authService.register(session, dto)
   }
 
-  @Post('sign-in')
-  async signIn(
+  @Post('login')
+  @ApiOperation({ summary: "Логин." })
+  async login(
     @Session() session: SessionApp,
-    @Body(new ValidationPipe()) dto: AuthDto
+    @Body(new ValidationPipe()) dto: LoginDto
   ) {
-    return this.authService.signIn(session, dto)
+    return this.authService.login(session, dto)
   }
 
 
-  @Get('sign-out')
-  async signOut(
+  @Get('logout')
+  @ApiOperation({ summary: "Выйти с аккаунта." })
+  async logout(
     @Session() session: SessionApp
   ) {
-    return this.authService.signOut(session)
+    return this.authService.logout(session)
   }
 
   @Get('check')
-  async a(
+  @ApiOperation({ summary: "Проверить авторизован ли Я." })
+  async check(
     @Session() session: SessionApp
   ) {
     return {isAuth: !!session?.channel?.id}

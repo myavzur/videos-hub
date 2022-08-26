@@ -1,15 +1,20 @@
-import { IsString, MaxLength } from "class-validator";
+import { IsOptional, IsString, MaxLength } from "class-validator";
 
 import { ChannelLimits } from "models/channels/channels.types";
 
 export class UpdateChannelDto {
   @IsString()
-  @MaxLength(ChannelLimits.NAME_LEN, {message: `Name can"t be > ${ChannelLimits.NAME_LEN} symbols!`})
-  name: string
+  @IsOptional()
+  @MaxLength(ChannelLimits.NAME_LEN, {
+    message: `Name can"t be > ${ChannelLimits.NAME_LEN} symbols!`
+  })
+  name?: string
 
   @IsString()
-  description: string
+  @IsOptional()
+  description?: string
 
   @IsString()
-  avatarPath: string
+  @IsOptional()
+  avatarPath?: string
 }

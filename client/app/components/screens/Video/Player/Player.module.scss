@@ -1,0 +1,45 @@
+.player {
+  @apply relative rounded-2xl overflow-hidden shadow;
+
+  &:hover,
+  &:focus {
+    .controls {
+      @apply bottom-5 opacity-100;
+    }
+  }
+
+  &__video {
+    @apply bg-black cursor-pointer;
+  }
+
+  .controls {
+    @apply absolute left-5 bottom-0 opacity-0 flex items-center justify-between bg-primary-1000 bg-opacity-75 rounded-lg shadow p-2.5 px-5 transition-all duration-1000;
+    width: calc(100% - 2.5rem);
+
+    &__time {
+      @apply flex items-center text-base text-white;
+
+      > p:nth-child(2) {
+        @apply mx-2;
+      }
+    }
+
+    &__progress {
+      @apply h-1.5 w-3/4 rounded overflow-hidden bg-gray-500 bg-opacity-50;
+
+      &_inner {
+        @apply relative h-full bg-white;
+      }
+    }
+
+
+    button {
+      @apply flex justify-center items-center text-base text-white;
+      
+      &:hover,
+      &:focus {
+        @apply text-brand-primary;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.channel_general {
+  @apply mb-10;
+
+  &__top {
+    @apply flex items-center gap-12;
+  }
+
+  &__description {
+    @apply text-gray-500 mt-3;
+  }
+}
