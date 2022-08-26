@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
@@ -49,6 +49,9 @@ export class ChannelsService {
 
   /** Subscribe or unsubscribe to channel */
   async subscribe( fromChannelId: Channel['id'], toChannelId: Channel['id'] ) {
+    if (fromChannelId === toChannelId) {
+      throw new BadRequestException('Are you fucking coward? Don\'t subscribe to yourself.')
+    }
     const params = {
       fromChannel: {id: fromChannelId},
       toChannel: {id: toChannelId}
@@ -71,7 +74,7 @@ export class ChannelsService {
   // ! FindBy, DeleteBy, little helpers...
   
   //** Throws new NotFoundException if user doesn't exist by itself!!! */
-  async findById(id: Channel['id']) {
+  async findById(id: any) {
     const channel = await this.channelsRepository.findOne({
       where: {id},
       relations: {

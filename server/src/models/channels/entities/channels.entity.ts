@@ -3,16 +3,30 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
-  JoinColumn, 
+  JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn, 
 } from "typeorm";
 
-import { Base } from "helpers/base.entity";
+import { Base } from "utils/base.entity";
 import { ChannelLimits } from "../channels.types";
 import { Video } from "models/videos/entities";
 import { Subscription } from "./subscriptions.entity";
 
 @Entity({name: 'channels'})
-export class Channel extends Base {
+export class Channel {
+  @PrimaryGeneratedColumn('uuid')
+  readonly id: number;
+  
+  @CreateDateColumn()
+  createdAt: Date
+
+  @UpdateDateColumn()
+  updatedAt: Date
+
+
+
+
   @Column('varchar', {unique: true, length: ChannelLimits.EMAIL_LEN})
   email: string
 
@@ -32,7 +46,7 @@ export class Channel extends Base {
   isVerified: boolean
 
   @Column('int', {default: 0})
-  subCount?: number
+  subscribersCount?: number
 
 
 
@@ -41,11 +55,11 @@ export class Channel extends Base {
   @JoinColumn({name: 'id', referencedColumnName: 'userId'})
   videos: Video[]
 
-  @OneToMany(() => Subscription, subscription => subscription.toChannel)
+  @OneToMany(() => Subscription, subscription => subscription.fromChannel)
   @JoinColumn({name: 'id', referencedColumnName: 'to_channel_id'})
   subscriptions: Subscription[]
 
-  @OneToMany(() => Subscription, subscription => subscription.fromChannel)
+  @OneToMany(() => Subscription, subscription => subscription.toChannel)
   @JoinColumn({name: 'id', referencedColumnName: 'from_channel_id'})
   subscribers: Subscription[]
 }

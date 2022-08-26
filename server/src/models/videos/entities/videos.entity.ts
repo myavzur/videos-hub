@@ -1,15 +1,11 @@
-import { 
-  Entity, 
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToOne,
-  JoinColumn,
-  OneToMany, 
+import {
+  Column, Entity, JoinColumn, ManyToOne, OneToMany
 } from "typeorm";
 
-import { Base } from "helpers/base.entity";
 import { Channel } from "models/channels/entities";
 import { Comment } from "models/comments/entities";
+import { Base } from "utils/base.entity";
+import { VideoLimits } from "../videos.types";
 
 @Entity({name: 'videos'})
 export class Video extends Base {
@@ -17,13 +13,13 @@ export class Video extends Base {
   @Column('boolean')
   isPublic: boolean
 
-  @Column('varchar')
+  @Column('varchar', {length: VideoLimits.NAME_LEN, default: ''})
   name: string
   
-  @Column('varchar')
+  @Column('varchar', {default: ''})
   videoPath: string
 
-  @Column('varchar')
+  @Column('varchar', {default: ''})
   thumbnailPath: string
 
   @Column('int', {default: 0})

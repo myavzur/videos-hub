@@ -6,7 +6,7 @@ import {
   JoinColumn, 
 } from "typeorm";
 
-import { Base } from "helpers/base.entity";
+import { Base } from "utils/base.entity";
 import { Video } from "models/videos/entities";
 import { Channel } from "models/channels/entities";
 

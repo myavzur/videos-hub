@@ -4,7 +4,7 @@ import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/
 import { ChannelsService } from 'models/channels/channels.service';
 import { AuthDto } from './dto';
 import { Channel } from 'models/channels/entities';
-import { OkException } from 'helpers/exeptions';
+import { OkException } from 'utils/exeptions';
 import { SessionApp } from 'models/sessions/sessions.types';
 
 @Injectable()

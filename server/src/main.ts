@@ -1,9 +1,10 @@
 import { Logger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module';
 
 import { SessionsModule } from './models/sessions/sessions.module';
-import { getZero } from 'helpers/get-zero';
+import { getZero } from 'utils/get-zero';
 
 const SERVER_HOST = process.env.SERVER_HOST || 'localhost'
 const SERVER_PORT = process.env.SERVER_PORT || 5000
@@ -23,6 +24,13 @@ async function bootstrap() {
 
   // API
   app.setGlobalPrefix('api')
+  const swaggerOptions = new DocumentBuilder()
+    .setTitle('RandomTube API Docs')
+    .setDescription('Пиздец блять нахуй')
+    .setVersion('1.0.0')
+    .build()
+  const swaggerDocument = SwaggerModule.createDocument(app, swaggerOptions)
+  SwaggerModule.setup('api/docs', app, swaggerDocument)
 
 
   // Started

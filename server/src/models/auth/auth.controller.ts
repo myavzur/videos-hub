@@ -1,9 +1,11 @@
 import { Body, Controller, Get, Post, Session, ValidationPipe } from '@nestjs/common';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { SessionApp } from 'models/sessions/sessions.types';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto';
 
+@ApiTags('Authorization')
 @Controller('auth')
 export class AuthController {
   constructor(
@@ -11,6 +13,7 @@ export class AuthController {
   ) {}
 
   @Post('sign-up')
+  @ApiOperation({ summary: "Регистрация." })
   async signUp(
     @Session() session: SessionApp,
     @Body(new ValidationPipe()) dto: AuthDto
@@ -19,6 +22,7 @@ export class AuthController {
   }
 
   @Post('sign-in')
+  @ApiOperation({ summary: "Логин." })
   async signIn(
     @Session() session: SessionApp,
     @Body(new ValidationPipe()) dto: AuthDto
@@ -28,6 +32,7 @@ export class AuthController {
 
 
   @Get('sign-out')
+  @ApiOperation({ summary: "Выйти с аккаунта." })
   async signOut(
     @Session() session: SessionApp
   ) {
@@ -35,7 +40,8 @@ export class AuthController {
   }
 
   @Get('check')
-  async a(
+  @ApiOperation({ summary: "Проверить авторизован ли Я." })
+  async check(
     @Session() session: SessionApp
   ) {
     return {isAuth: !!session?.channel?.id}
