@@ -1,14 +1,10 @@
-import { 
-  Entity, 
-  PrimaryGeneratedColumn, 
-  Column,
-  ManyToOne,
-  JoinColumn, 
+import {
+  Column, Entity, JoinColumn, ManyToOne
 } from "typeorm";
 
-import { Base } from "utils/base.entity";
-import { Video } from "models/videos/entities";
 import { Channel } from "models/channels/entities";
+import { Video } from "models/videos/entities";
+import { Base } from "utils/base.entity";
 
 @Entity({name: 'comments'})
 export class Comment extends Base {

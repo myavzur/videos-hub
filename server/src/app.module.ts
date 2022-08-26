@@ -1,15 +1,16 @@
-import * as path from 'path';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as path from 'path';
 
 import { getTypeormConfig } from 'config/typeorm.config';
-import { SessionsModule } from 'models/sessions/sessions.module';
 import { AuthModule } from 'models/auth/auth.module';
 import { ChannelsModule } from 'models/channels/channels.module';
-import { VideosModule }   from 'models/videos/videos.module';
 import { CommentsModule } from 'models/comments/comments.module';
+import { MediaModule } from 'models/media/media.module';
+import { SessionsModule } from 'models/sessions/sessions.module';
+import { VideosModule } from 'models/videos/videos.module';
 
 // Current Working Direction (node process) = chat/server
 const CWD = process.cwd()
@@ -32,7 +33,9 @@ const CWD = process.cwd()
     SessionsModule,
     AuthModule,
     ChannelsModule,
-    VideosModule, CommentsModule
+    MediaModule,
+    VideosModule, CommentsModule, 
+    
   ]
 })
 export class AppModule {}

@@ -8,7 +8,7 @@ export class CreateVideoDto {
   name: string
 
   @IsBoolean()
-  isPublic: string
+  isPublic: boolean
 
   @IsString()
   description: string

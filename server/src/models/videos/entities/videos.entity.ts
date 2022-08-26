@@ -10,11 +10,14 @@ import { VideoLimits } from "../videos.types";
 @Entity({name: 'videos'})
 export class Video extends Base {
 
-  @Column('boolean')
+  @Column('boolean', {default: false})
   isPublic: boolean
 
   @Column('varchar', {length: VideoLimits.NAME_LEN, default: ''})
   name: string
+
+  @Column('text', {default: ''})
+  description: string
   
   @Column('varchar', {default: ''})
   videoPath: string
@@ -28,6 +31,7 @@ export class Video extends Base {
   @Column('int', {default: 0})
   views?: number
 
+  
   @Column('int', {default: 0})
   likes?: number
 

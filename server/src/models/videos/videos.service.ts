@@ -1,27 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Channel } from 'models/channels/entities';
 import { FindOptionsWhereProperty, ILike, MoreThan, Repository } from 'typeorm';
-import { UpdateVideoDto } from './dto';
+
+import { Channel } from 'models/channels/entities';
+import { OkException } from 'utils/exeptions';
+import { CreateVideoDto, UpdateVideoDto } from './dto';
 import { Video } from './entities';
+import { includeAllRelations, selectChannelPreview } from './videos.selectors';
 
-
-
-const includeAll = {
-  channel: true, // Author of the video
-  comments: {
-    channel: true // Author of the comment
-  }
-}
-
-const selectChannelPreview = {
-  channel: { 
-    id: true, 
-    name: true, 
-    avatarPath: true, 
-    isVerified: true 
-  }
-}
 
 
 
@@ -37,11 +23,12 @@ export class VideosService {
 
 
   // ! Generals CRUD
-  async createVideo(channelId: Channel['id']) {
+  async createVideo(channelId: Channel['id'], dto: CreateVideoDto) {
     const newVideo = await this.videosRepository.save({
-      channel: { id: channelId }
+      channel: { id: channelId }, 
+      ...dto
     })
-    console.log("🚀 ~ file: videos.service.ts ~ line 44 ~ VideosService ~ createVideo ~ newVideo", newVideo)
+    
 
     return newVideo
   }
@@ -55,14 +42,20 @@ export class VideosService {
 
   async updateViews(id: Video['id']) {
     const video = await this.findById(id, {isPulic: true})
+
     video.views++
-    return await this.videosRepository.save(video)
+    await this.videosRepository.save(video)
+
+    throw new OkException(`Views on video "${video.name}" was incremented by 1`)
   }
 
   async updateLikes(id: Video['id']) {
     const video = await this.findById(id, {isPulic: true})
+
     video.likes++
-    return await this.videosRepository.save(video)
+    await this.videosRepository.save(video)
+
+    throw new OkException(`Likes on video "${video.name}" was incremented by 1`)
   }
 
 
@@ -88,7 +81,7 @@ export class VideosService {
       where: {
         ...options, isPublic: true  
       },
-      relations: includeAll,
+      relations: includeAllRelations,
       select:    selectChannelPreview,
       order: { createdAt: 'DESC' }
     })
@@ -101,7 +94,7 @@ export class VideosService {
       where: {
         views: MoreThan(0)
       },
-      relations: includeAll,
+      relations: includeAllRelations,
       select:    selectChannelPreview,
 
     })
@@ -109,13 +102,13 @@ export class VideosService {
 
 
   //** Throws new NotFoundException if user doesn't exist by itself!!! */
-  async findById(id: any, options: FindByIdOptions) {
+  async findById(id: Video['id'], options: FindByIdOptions) {
     const video = await this.videosRepository.findOne({
       where: {
         id, 
         isPublic: options.isPulic
       },
-      relations: includeAll
+      relations: includeAllRelations
     })
 
     if (!video) throw new NotFoundException('Video doesn\'t exist. 😓')

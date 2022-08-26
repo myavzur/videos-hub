@@ -59,7 +59,7 @@ export class VideosController {
     @Session() session: SessionApp,
     @Body(new ValidationPipe()) dto: CreateVideoDto
   ) {
-    return await this.videosService.createVideo(session.channel.id)
+    return await this.videosService.createVideo(session.channel.id, dto)
   }
 
   // Update video with data
