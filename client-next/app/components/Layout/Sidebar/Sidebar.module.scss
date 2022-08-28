@@ -1,0 +1,13 @@
+.sidebar {
+  @apply py-5 px-7;
+  width: 18%; // ? Because Layout_content is 82%
+
+  & > .logo {
+    @apply text-2xl font-semibold;
+    color: #fefefe
+  } 
+
+  .copyright {
+    @apply text-gray-600 text-opacity-60 text-xs;
+  }
+}

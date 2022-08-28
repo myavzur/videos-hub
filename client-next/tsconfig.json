@@ -15,7 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     // Aliases
-    "baseUrl": "./",
+    "baseUrl": "./app",
     "paths": {
       "@/components/*": ["components/*"],
       "@/providers/*":  ["providers/*"],
@@ -25,8 +25,10 @@
       "@/types/*":      ["types/*"],
       "@/hooks":        ["hooks"],
       "@/hooks/*":      ["hooks/*"],
+      "@/helpers":      ["helpers"],
+      "@/helpers/*":    ["helpers/*"],
       "@/store/*":      ["store/*"],
-      "@/utils/*":      ["utils/*"],
+      "@/styles/*":     ["styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

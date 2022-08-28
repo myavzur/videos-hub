@@ -1,19 +1,19 @@
 import { NextPage } from "next"
-import Home from "@/components/Pages/Home"
-import Layout from "@/components/Layout"
-import Discover from "@/components/Pages/Home/Discover"
-import Catalog from "@/components/Catalog"
+import Home from "@/components/pages/Home"
 
 const HomePage: NextPage = () => {
   return (
-    <Layout title="RandomTube">
-      <Discover/>
-      <Catalog/>
-    </Layout>
+    <Home />
   )
 }
 
 // ? SSG - Server Static Generation
-
+export async function getStaticProps() {
+  return {
+    props: {
+      
+    }// will be passed to the page component as props
+  }
+}
 
 export default HomePage

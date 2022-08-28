@@ -2,27 +2,27 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  poweredByHeader: false, // Не будут видеть что сервак на Next
+  poweredByHeader: false, // ?  Не будут видеть что сервак на Next
   env: { 
-    CLIENT_HOST: process.env.CLIENT_HOST,
-    CLIENT_PORT: process.env.CLIENT_PORT
+    NEXT_CLIENT_URL: process.env.NEXT_CLIENT_URL
   },
-  images: { // Безопастность с какого домена грузим
+  images: { // ? Разрешить картинки с этого домена
     domains: ['localhost']
   },
   async rewrites() {
     return [
       {
-        // Перенаправляем с локального api/path на серверный api/path NestJs 
+        // ? Redirect from {NextS/api/path} to {NestJS/api/path}
         source: '/api/:path*', 
-        destination: 'http://localhost:5000/api/:path'
+        destination: `${process.env.NEST_SERVER_URL}/api/:path*`
       },
       {
         source: '/uploads/:path*',
-        destination: 'http://localhost:5000/uploads/:path'
+        destination: `${process.env.NEST_SERVER_URL}/uploads/:path*`
       }
     ]
   }
 }
+// TODO: Translate
 
 module.exports = nextConfig
