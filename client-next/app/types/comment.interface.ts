@@ -1,12 +1,12 @@
-import { IVideo, IChannel } from "@/types"
+import { IChannel, IVideo } from '@/types'
 
 export interface IComment {
-  content: string
+	content: string
 
-  channel: IChannel
-  video: IVideo
+	channel: IChannel
+	video: IVideo
 }
 
 export interface ICreateCommentParams extends Pick<IComment, 'content'> {
-  videoId: IVideo['id']
+	videoId: IVideo['id']
 }

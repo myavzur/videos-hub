@@ -1,12 +1,13 @@
-import { _axios } from "@/services/RandomTube"
-import { IChannel } from "@/types"
+import { IChannel } from '@/types'
+
+import { _axios } from '@/services/RandomTube'
 
 export const ChannelsService = {
-  async getAll() {
-    return await _axios.get<IChannel[]>('/channels')
-  },
+	async getAll() {
+		return await _axios.get<IChannel[]>('/channels')
+	},
 
-  async getChannel(id: IChannel['id']) {
-    return await _axios.get<IChannel[]>(`/channels/id/${id}`)
-  }
+	async getChannel(id: IChannel['id']) {
+		return await _axios.get<IChannel[]>(`/channels/id/${id}`)
+	}
 }

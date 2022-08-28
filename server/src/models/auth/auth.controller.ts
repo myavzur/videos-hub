@@ -12,31 +12,31 @@ export class AuthController {
     private readonly authService: AuthService
   ) {}
 
-  @Post('sign-up')
+  @Post('register')
   @ApiOperation({ summary: "Регистрация." })
-  async signUp(
+  async register(
     @Session() session: SessionApp,
     @Body(new ValidationPipe()) dto: AuthDto
   ) {
-    return this.authService.signUp(session, dto)
+    return this.authService.register(session, dto)
   }
 
-  @Post('sign-in')
+  @Post('login')
   @ApiOperation({ summary: "Логин." })
-  async signIn(
+  async login(
     @Session() session: SessionApp,
     @Body(new ValidationPipe()) dto: AuthDto
   ) {
-    return this.authService.signIn(session, dto)
+    return this.authService.login(session, dto)
   }
 
 
-  @Get('sign-out')
+  @Get('logout')
   @ApiOperation({ summary: "Выйти с аккаунта." })
-  async signOut(
+  async logout(
     @Session() session: SessionApp
   ) {
-    return this.authService.signOut(session)
+    return this.authService.logout(session)
   }
 
   @Get('check')

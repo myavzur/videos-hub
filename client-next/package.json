@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "format": "prettier --write \"app/**/*.{ts,tsx}\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -24,7 +25,8 @@
     "react-loading-skeleton": "^3.1.0",
     "react-query": "^3.39.2",
     "react-redux": "^8.0.2",
-    "react-redux-toastr": "^7.6.9",
+    "react-redux-toastr": "^7.5.2",
+    "react-spring": "^9.5.2",
     "redux-persist": "^6.0.0",
     "sass": "^1.54.5"
   },

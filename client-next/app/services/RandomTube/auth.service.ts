@@ -1,28 +1,33 @@
-import { _axios } from "@/services/RandomTube/_axios";
-import { IChannel } from "@/types/channel.interface";
+import { IChannel } from '@/types/channel.interface'
 
+import { _axios } from '@/services/RandomTube/_axios'
 
 export const AuthService = {
-  async signIn(email: string, password: string) {
-    const response = await _axios.post<IAuthBody>('auth/sign-in', {
-      email, password
-    })
+	async authenticate(params: AuthenticationParams) {
+		const { type, payload } = params
 
-    console.log(response)
+		const res = await _axios.post<IAuthenticationResponse>(
+			`auth/${type}`,
+			payload
+		)
 
-    return response.data
-  },
+		return res.data
+	},
 
-  async signUp(email: string, password: string) {
-    const response = await _axios.post<IAuthBody>('auth/sign-up', {
-      email, password
-    })
+	async logout() {
+		const res = await _axios.get(`auth/logout`)
 
-    return response.data
-  }
+		return res.data
+	}
 }
 
+export type IAuthenticationBody = Pick<IChannel, 'email' | 'password'>
+export type IAuthenticationResponse = Omit<
+	IChannel,
+	'password' | 'videos' | 'subscriptions'
+>
 
-export interface IAuthBody {
-  channel: Pick<IChannel, 'id' | 'email'> | null;
+interface AuthenticationParams {
+	type: 'login' | 'register'
+	payload: IAuthenticationBody
 }

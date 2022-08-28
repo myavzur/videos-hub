@@ -108,14 +108,17 @@ export class ChannelsService {
       where: {email},
       select: {
         id: true, 
-        email: true,
-        password: true
+        email: true, password: true,
+        createdAt: true, updatedAt: true,
+        name: true, description: true, avatarPath: true,
+        isVerified: true, subscribersCount: true
       }
     })
 
     if (!channel) throw new NotFoundException('Channel doesn\'t exist. 😓')
     return channel
   }
+  
 
   async findAll() {
     return await this.channelsRepository.find()

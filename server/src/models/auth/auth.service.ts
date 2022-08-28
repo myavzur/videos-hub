@@ -13,7 +13,7 @@ export class AuthService {
     private readonly channelsService: ChannelsService
   ) {}
 
-  async signUp(session: SessionApp, dto: AuthDto) {
+  async register(session: SessionApp, dto: AuthDto) {
     const oldChannel = await this.channelsService.findByEmail(dto.email, {shouldThrowEmptyException: false})
 
     if (oldChannel) {
@@ -30,7 +30,7 @@ export class AuthService {
 
   
 
-  async signIn(session: SessionApp, dto: AuthDto) {
+  async login(session: SessionApp, dto: AuthDto) {
     const channel = await this.channelsService.findByEmailWithPassword(dto.email)
     
     const isCorrectPassword = await bcrypt.compare(dto.password, channel.password)
@@ -49,7 +49,7 @@ export class AuthService {
   
 
 
-  async signOut(session: SessionApp) {
+  async logout(session: SessionApp) {
     if (session && session?.channel?.id) {
       session.destroy(null)
 

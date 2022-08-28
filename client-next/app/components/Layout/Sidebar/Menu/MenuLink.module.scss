@@ -40,7 +40,7 @@
   &::before {
     @apply 
       h-full w-1 rounded-lg bg-clickable absolute -left-7 top-0 -translate-x-1
-      transition-opacity transition-transform duration-500;
+      transition-all duration-500;
     content: ''
   } // Make line behind the scene
 

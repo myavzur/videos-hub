@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 /**
  * ? RNDM - Random (Tube) API URL
@@ -6,9 +6,9 @@ import axios from 'axios';
 export const RNDM_API_URL = `${process.env.NEXT_CLIENT_URL}/api`
 
 export const _axios = axios.create({
-  baseURL: RNDM_API_URL,
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  withCredentials: true
+	baseURL: RNDM_API_URL,
+	headers: {
+		'Content-Type': 'application/json'
+	},
+	withCredentials: true
 })

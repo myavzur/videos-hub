@@ -1,29 +1,31 @@
-import React from "react"
+import React from 'react'
+
+import Line from '@/components/Line'
 
 import MenuLink from './MenuLink'
-import Line from "@/components/Line"
+import { IMenuLink } from './menu.data'
+
 import styles from './Menu.module.scss'
-import { IMenuLink } from "./menu.data"
 
 interface MenuProps {
-  title: string
-  items: IMenuLink[]
+	title: string
+	items: IMenuLink[]
 }
 
 const Menu: React.FC<MenuProps> = ({ title, items }) => {
-  return (
-    <nav className={styles.menu}>
-      <h3 className={styles.title}>{title}</h3>
+	return (
+		<nav className={styles.menu}>
+			<h3 className={styles.title}>{title}</h3>
 
-      <ul className={styles.list}>
-        {items.map(item => (
-          <MenuLink item={item} key={item.link} />
-        ))}
-      </ul>
+			<ul className={styles.list}>
+				{items.map(item => (
+					<MenuLink item={item} key={item.link} />
+				))}
+			</ul>
 
-      <Line/>
-    </nav>
-  )
+			<Line />
+		</nav>
+	)
 }
 
 export default Menu
