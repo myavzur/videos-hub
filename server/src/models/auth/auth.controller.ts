@@ -3,7 +3,7 @@ import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import { SessionApp } from 'models/sessions/sessions.types';
 import { AuthService } from './auth.service';
-import { AuthDto } from './dto';
+import { AuthenticationDto } from './dto';
 
 @ApiTags('Authorization')
 @Controller('auth')
@@ -16,7 +16,7 @@ export class AuthController {
   @ApiOperation({ summary: "Регистрация." })
   async register(
     @Session() session: SessionApp,
-    @Body(new ValidationPipe()) dto: AuthDto
+    @Body(new ValidationPipe()) dto: AuthenticationDto
   ) {
     return this.authService.register(session, dto)
   }
@@ -25,7 +25,7 @@ export class AuthController {
   @ApiOperation({ summary: "Логин." })
   async login(
     @Session() session: SessionApp,
-    @Body(new ValidationPipe()) dto: AuthDto
+    @Body(new ValidationPipe()) dto: AuthenticationDto
   ) {
     return this.authService.login(session, dto)
   }

@@ -8,44 +8,47 @@ import {
 } from '@/services/RandomTube/auth.service'
 
 import { Namespaces } from '../namespaces.enum'
+import { alertError } from 'utils/alert-error'
 
-export const register = createAsyncThunk<
-	IAuthenticationResponse,
-	IAuthenticationBody
->(`${Namespaces.channelSlice}/registrating🆕`, async (payload, thunkApi) => {
-	try {
-		const response = await AuthService.authenticate({
-			type: 'register',
-			payload
-		})
 
-		toastr.success('Registration', 'Successfuly registrated. 👌')
+export const register = createAsyncThunk<IAuthenticationResponse, IAuthenticationBody>(
+	`${Namespaces.channelSlice}/register`, 
+	async (payload, thunkApi) => {
+		try {
+			const response = await AuthService.authenticate({
+				type: 'register',
+				payload
+			})
 
-		return response
-	} catch (e) {
-		console.log(e)
-		return thunkApi.rejectWithValue(e)
+			toastr.success('Registration', 'Successfuly registrated. 👌')
+
+			return response
+		} catch (e) {
+			alertError(e, 'Registration')
+
+			return thunkApi.rejectWithValue(e)
+		}
 	}
-})
+)
+	
+export const login = createAsyncThunk<IAuthenticationResponse, IAuthenticationBody>(
+	`${Namespaces.channelSlice}/loging`, 
+	async (payload, thunkApi) => {
+		try {
+			const response = await AuthService.authenticate({ type: 'login', payload })
 
-export const login = createAsyncThunk<
-	IAuthenticationResponse,
-	IAuthenticationBody
->(`${Namespaces.channelSlice}/logginizing🔑`, async (payload, thunkApi) => {
-	try {
-		const response = await AuthService.authenticate({ type: 'login', payload })
-
-		toastr.success('Login', 'Successfuly login. 🤾')
-
-		return response
-	} catch (e) {
-		console.log(e)
-		return thunkApi.rejectWithValue(e)
+			toastr.success('Login', 'Successfuly login. 🤾')
+			
+			return response
+		} catch (e) {
+			alertError(e, 'Login')
+			return thunkApi.rejectWithValue(e)
+		}
 	}
-})
+)
 
 export const logout = createAsyncThunk<null, null>(
-	`${Namespaces.channelSlice}/logouting🖐`,
+	`${Namespaces.channelSlice}/logout`,
 	async (payload, thunkApi) => {
 		try {
 			const response = await AuthService.logout()
@@ -54,7 +57,7 @@ export const logout = createAsyncThunk<null, null>(
 
 			return response
 		} catch (e) {
-			console.log(e)
+			alertError(e, 'Logout')
 			return thunkApi.rejectWithValue(e)
 		}
 	}

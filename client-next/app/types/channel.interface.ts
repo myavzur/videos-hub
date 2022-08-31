@@ -1,5 +1,10 @@
 import { IBase, IVideo } from '@/types'
 
+
+export enum SubscriptionResults {
+	UNSUBSCRIBED, SUBSCRIBED
+}
+
 export interface IChannel extends IBase {
 	email: string
 	password: string
@@ -17,3 +22,4 @@ export interface IChannel extends IBase {
 export interface ISubscription extends IBase {
 	toChannel: IChannel
 }
+

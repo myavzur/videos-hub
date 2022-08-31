@@ -34,7 +34,6 @@ export const { reducer } = createSlice({
 				state.loadingStatus = 'loading'
 			})
 			.addCase(register.fulfilled, (state, action) => {
-				console.log(action)
 				state.loadingStatus = 'idle'
 				state.channel = action.payload
 			})
@@ -47,7 +46,6 @@ export const { reducer } = createSlice({
 				state.loadingStatus = 'loading'
 			})
 			.addCase(login.fulfilled, (state, action) => {
-				console.log(action)
 				state.loadingStatus = 'idle'
 				state.channel = action.payload
 			})

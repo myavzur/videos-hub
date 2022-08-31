@@ -20,14 +20,11 @@ const MenuLink: React.FC<MenuItemProps> = ({ item }) => {
   */
 	const { asPath } = useRouter()
 
+	// TODO: Integrate useAuth() from Redux
+	// TODO: Swap item.link to channels/me
 	if (item.link === '/my-channel') {
 		return null
 	}
-	// if (item.link === 'my-channel') {
-	//   if(!channel) return null
-
-	//   item.link = `/c/${channel.id}`
-	// }
 
 	return (
 		<li>

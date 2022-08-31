@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Line from '@/components/Line'
+import Line from '@/components/common/Line'
 
 import MenuLink from './MenuLink'
 import { IMenuLink } from './menu.data'

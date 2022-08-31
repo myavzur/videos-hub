@@ -16,7 +16,7 @@ export class CommentsController {
   @Post()
   @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Добавить комментарий к видео! 🍓" })
-  async signUp(
+  async createComment(
     @Session() session: SessionApp,
     @Body(new ValidationPipe()) dto: CreateCommentDto
   ) {

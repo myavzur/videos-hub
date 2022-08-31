@@ -7,6 +7,6 @@ export interface IComment {
 	video: IVideo
 }
 
-export interface ICreateCommentParams extends Pick<IComment, 'content'> {
+export interface ICreateCommentBody extends Pick<IComment, 'content'> {
 	videoId: IVideo['id']
 }

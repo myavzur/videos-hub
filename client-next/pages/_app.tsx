@@ -1,16 +1,17 @@
-import { persistor, store } from '@/store/store'
+import React from 'react'
 import type { AppProps } from 'next/app'
 import NextProgressBar from 'nextjs-progressbar'
-import React from 'react'
-import { Provider } from 'react-redux'
 import ReduxToastr from 'react-redux-toastr'
-import { PersistGate } from 'redux-persist/integration/react'
+
+import PersistedStoreProvider from '@/components/providers/PersistedStoreProvider'
 
 import '../app/styles/globals.scss'
+import AuthProvider from '@/components/providers/AuthProvider/AuthProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <React.Fragment>
+
       <NextProgressBar
         color='#ff7652'
         startPosition={0.3}
@@ -18,26 +19,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         height={3}
       />
 
-      <Provider store={store}>
-        <PersistGate 
-          persistor={persistor} 
-          loading={null} // ? Не нужен лодинг так как быстро подгрузится итак
-        >
-          <Component {...pageProps} />
+      <PersistedStoreProvider>
+          <AuthProvider Component={Component}>
+            <Component {...pageProps} />
+          </AuthProvider>
+      </PersistedStoreProvider>
 
-
-          {/* Alerts */}
-          <ReduxToastr
-            newestOnTop={false}
-            preventDuplicates
-            progressBar
-            closeOnToastrClick
-            timeOut={4000}
-            transitionIn="fadeIn"
-            transitionOut='bounceOut'
-          />
-        </PersistGate>
-      </Provider>
     </React.Fragment>
   )
 }

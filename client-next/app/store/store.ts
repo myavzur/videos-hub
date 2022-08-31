@@ -4,13 +4,15 @@ import {
 	PAUSE,
 	PERSIST,
 	PURGE,
-	PersistConfig,
 	REGISTER,
 	REHYDRATE,
 	persistReducer,
 	persistStore
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+
+import { apiErrorsMiddleware } from './middlewares/api-errors.middleware'
+import { api } from './slices/api/api.slice'
 
 import { rootReducer } from './root.reducer'
 
@@ -31,11 +33,13 @@ export const store = configureStore({
 			serializableCheck: {
 				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER] // ? Overwise RTK would conflict with Redux-Persist
 			}
-		}).concat() // Redux Thunk and others included
+		})
+		.concat(apiErrorsMiddleware)
+		.concat(api.middleware) // Redux Thunk and others included
 	// devTools: process.env.NODE_ENV !== 'production', // Disable in Prod
 })
 
 export const persistor = persistStore(store)
 
-export type StoreState = ReturnType<typeof store.getState>
-export type StoreDispatch = typeof store.dispatch
+export type IStoreState = ReturnType<typeof store.getState>
+export type IStoreDispatch = typeof store.dispatch

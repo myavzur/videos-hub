@@ -2,7 +2,7 @@ import * as bcrypt from 'bcrypt'
 import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 
 import { ChannelsService } from 'models/channels/channels.service';
-import { AuthDto } from './dto';
+import { AuthenticationDto } from './dto';
 import { Channel } from 'models/channels/entities';
 import { OkException } from 'utils/exeptions';
 import { SessionApp } from 'models/sessions/sessions.types';
@@ -13,7 +13,7 @@ export class AuthService {
     private readonly channelsService: ChannelsService
   ) {}
 
-  async register(session: SessionApp, dto: AuthDto) {
+  async register(session: SessionApp, dto: AuthenticationDto) {
     const oldChannel = await this.channelsService.findByEmail(dto.email, {shouldThrowEmptyException: false})
 
     if (oldChannel) {
@@ -30,7 +30,7 @@ export class AuthService {
 
   
 
-  async login(session: SessionApp, dto: AuthDto) {
+  async login(session: SessionApp, dto: AuthenticationDto) {
     const channel = await this.channelsService.findByEmailWithPassword(dto.email)
     
     const isCorrectPassword = await bcrypt.compare(dto.password, channel.password)

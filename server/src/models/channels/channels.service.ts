@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 
-import { AuthDto } from 'models/auth/dto/auth.dto';
+import { AuthenticationDto } from 'models/auth/dto/authentication.dto';
 import { SubscriptionResults } from './channels.types';
 import { UpdateChannelDto } from './dto';
 import { Channel, Subscription } from './entities';
@@ -19,7 +19,7 @@ export class ChannelsService {
 
 
 
-  async createChannel(dto: AuthDto) {
+  async createChannel(dto: AuthenticationDto) {
     const $password = await bcrypt.hash(dto.password, 5)
 
     const newChannel = await this.channelsRepository.save({

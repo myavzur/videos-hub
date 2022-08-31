@@ -28,7 +28,7 @@
       "@/helpers":      ["helpers"],
       "@/helpers/*":    ["helpers/*"],
       "@/store/*":      ["store/*"],
-      "@/styles/*":     ["styles/*"]
+      "@/styles/*":     ["styles/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
