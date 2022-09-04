@@ -1,25 +1,31 @@
 .search {
-  @apply relative w-7/12;
+  @apply relative w-7/12 rounded-xl transition-colors;
+  border: 1px solid #292932;
+  background-color: #292932;
+  
+  &:hover, &:active {
+    @apply border-active;
+  }
+
 
   &-field {
     @apply block relative;
 
     input {
-      @apply rounded-lg py-2 px-4 w-full block outline-0 text-white shadow;
-      background: #292932;;
+      @apply rounded-xl py-1.5 px-4 block outline-none text-white;
+
+      width: calc(100% - 1.8rem);
+      background-color: inherit;
+      border: 1px solid #292932;
       transition: box-shadow 0.4s ease;
 
       &::placeholder {
         @apply text-primary-500;
       }
-
-      &:focus {
-        @apply shadow-md;
-      }
     }
 
     svg {
-      @apply absolute right-4 opacity-90;
+      @apply absolute right-4 opacity-90 w-5 h-5;
       
       top: 50%;
       transform: translateY(-50%)
@@ -28,7 +34,7 @@
 }
 
 .search-result {
-  @apply block-with-shadow rounded-lg animate-scaleIn flex flex-wrap absolute w-full z-20 p-5 mt-3;
+  @apply block-with-shadow rounded-lg animate-scaleIn flex flex-wrap absolute w-full z-20 p-5 mt-1;
   left: 0;
   background: #292932;
 

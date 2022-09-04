@@ -8,8 +8,8 @@ export interface IVideo extends IBase {
 	thumbnailPath: string
 
 	duration: number
-	views?: number
-	likes?: number
+	views: number
+	likes: number
 
 	channel: IChannel
 	comments: Comment[]

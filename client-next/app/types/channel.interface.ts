@@ -8,9 +8,9 @@ export enum SubscriptionResults {
 export interface IChannel extends IBase {
 	email: string
 	password: string
-	avatarPath: string
+	avatarPath?: string
 	name: string
-	description: string
+	description?: string
 
 	isVerified?: boolean
 	subscribersCount: number

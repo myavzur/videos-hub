@@ -3,9 +3,10 @@ import { RiSearchEyeLine } from 'react-icons/ri'
 
 import { useSearch } from './useSearch'
 import styles from './Search.module.scss'
+import VideoItem from '@/components/common/VideoItem'
 
 const Search: React.FC = () => {
-	const { handleSearch, term, response } = useSearch()
+	const { handleSearch, term, response } = useSearch(500)
 
 	return (
 		<div className={styles.search}>
@@ -17,9 +18,10 @@ const Search: React.FC = () => {
 					onChange={handleSearch}
 				/>
 
-				<RiSearchEyeLine fill='white'/>
+				<RiSearchEyeLine fill='white' height={10} width={10}/>
 			</label>
 
+			{response.isLoading && <h1>LOading...</h1>}
 			{response.isSuccess && (
 				<div className={styles['search-result']}>
 
@@ -28,8 +30,7 @@ const Search: React.FC = () => {
 						? 
 						(
 							response.data.map(video => (
-								// <VideoItem isSmall video={video} key={video.id}/>
-								<div key={video.id}>{video.name}</div>
+								<VideoItem isSmall video={video} key={video.id}/>
 							))
 						)	
 						: 
@@ -39,7 +40,6 @@ const Search: React.FC = () => {
 							</div>
 						)
 					}
-
 				</div>
 			)}
 		</div>

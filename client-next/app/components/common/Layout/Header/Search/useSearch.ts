@@ -2,9 +2,9 @@ import { useDebounce } from "@/hooks/useDebounce"
 import { videoApi } from "@/store/slices/api/videos.api"
 import { ChangeEvent, useState } from "react"
 
-export const useSearch = () => {
+export const useSearch = (delayBeforeRequest: number) => {
   const [term, setTerm] = useState('')
-  const debouncedValue  = useDebounce(term, 500)
+  const debouncedValue  = useDebounce(term, delayBeforeRequest)
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     setTerm(e.target.value)
