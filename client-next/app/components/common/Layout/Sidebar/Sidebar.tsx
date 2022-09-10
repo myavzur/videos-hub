@@ -8,17 +8,16 @@ import styles from './Sidebar.module.scss'
 
 // TODO: Вывести меню через БД???
 const Sidebar: React.FC = () => {
-	// TODO: Получить профиль
 	return (
 		<aside className={styles.sidebar}>
 			<Link href='/'>
-				<a className={styles.logo}>RandomTube</a>
+				<a className={styles['sidebar__logo']}>Бляяяя</a>
 			</Link>
 
-			<Menu title='Menu' items={menu} />
+			<Menu title='Menu' links={menu} />
 			{/* <Menu items={}/> */}
 
-			<div className={styles.copyright}>© 2022 RandomTube by myavzur</div>
+			<div className={styles['sidebar__copyright']}>© 2022 RandomTube by myavzur</div>
 		</aside>
 	)
 }

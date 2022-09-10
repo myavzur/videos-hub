@@ -24,13 +24,13 @@ const Layout: React.FC<PropsWithChildren<LayoutProps>> = ({
 				<meta name='description' content={meta.description} />
 			</Head>
 
-			<main className={styles.main}>
+			<main className={styles.layout}>
 				<Sidebar />
 
-				<section className={styles.content}>
+				<section className={styles['layout__content']}>
 					<Header />
 
-					<div className={styles.content_wrapper}>{children}</div>
+					<div className={styles['layout__content-wrapper']}> {children} </div>
 				</section>
 			</main>
 		</React.Fragment>

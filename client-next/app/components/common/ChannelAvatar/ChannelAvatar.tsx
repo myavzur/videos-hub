@@ -1,24 +1,31 @@
-import { IChannel } from "@/types"
-import cn from "classnames"
+import React from "react"
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
+import cn from "classnames"
 import { AiFillCheckCircle } from 'react-icons/ai'
+
+import { IChannel } from "@/types"
 
 import styles from './ChannelAvatar.module.scss'
 
 
-interface UserAvatarProps {
+interface ChannelAvatarProps {
   channel: IChannel,
   isWhite?: boolean
 }
 
-const UserAvatar: React.FC<UserAvatarProps> = ({ channel, isWhite }) => {
+const ChannelAvatar: React.FC<ChannelAvatarProps> = ({ channel, isWhite }) => {
   return (
     <Link href={`/channels/${channel.id}`}>
       <a>
-        <span className={cn(styles.avatar, {[styles.white]: isWhite})}>
+        <div 
+          className={cn(
+            styles['channel-avatar'], 
+            {[styles['channel-avatar_white']]: isWhite})
+          }
+        >
           <Image
+            className={styles['channel-avatar__image']}
             src={channel.avatarPath || ''}
             alt={channel.name}
             width={45}
@@ -26,14 +33,14 @@ const UserAvatar: React.FC<UserAvatarProps> = ({ channel, isWhite }) => {
           />
 
           {channel.isVerified && (
-            <span className={styles.isVerified}>
+            <div className={styles['channel-avatar_verified']}>
               <AiFillCheckCircle/>
-            </span>
+            </div>
           )}
-        </span>
+        </div>
       </a>
     </Link>
   )
 }
 
-export default UserAvatar
+export default ChannelAvatar

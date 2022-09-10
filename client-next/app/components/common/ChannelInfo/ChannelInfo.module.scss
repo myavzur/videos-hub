@@ -1,0 +1,15 @@
+.channel-info {
+  @apply flex items-center;
+
+  &__summary {
+    @apply ml-4;
+
+    &-name {
+      @apply text-base text-white;
+    }
+
+    &-subscribers-count {
+      @apply text-xs text-gray-500;
+    }
+  }
+}

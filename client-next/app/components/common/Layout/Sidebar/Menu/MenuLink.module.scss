@@ -1,42 +1,33 @@
-.menu_link {
+.menu-link {
   @apply flex items-center text-gray-500 font-medium relative;
 
-  .content {
+  &__content {
     @apply mr-4 p-2 rounded-xl;
     background-color: #363448;
 
-
-    // * Modificators
-    &.image {
+    &_image {
       @apply overflow-hidden p-0 shadow flex items-center justify-center;
       // margin-right: 1rem !important;
       background: none;
       border: 0.06em solid #363440;
     }
-
-    &.number {
-      @apply text-red-500 ml-5;
-    }
   } 
 
-  .title {
-    @apply font-normal
+  &__title {
+    @apply font-normal;
   }
 
 
 
-  // * Modificators
-  &.active {
+  &_active {
     @apply text-white;
 
-    .content {
+    .menu-link__content {
       @apply bg-clickable shadow shadow-clickable;
     }
   }
+  
 
-
-
-  // ! Pseudo !
   &::before {
     @apply 
       h-full w-1 rounded-lg bg-clickable absolute -left-7 top-0 -translate-x-1

@@ -1,10 +1,9 @@
-import { useStoreSelector } from "@/hooks"
 import { useRouter } from "next/router"
-import React from "react"
-import { PropsWithChildren } from "react"
+import React, { PropsWithChildren } from "react"
 
-import { AuthProviderProps } from "./private-route"
-import { Endpoints } from "../../../../pages/endpoints.enum"
+import { useStoreSelector } from "@/hooks"
+import { ClientEndpoints } from "@/routes/endpoints.enum"
+import { AuthProviderProps } from "./private-route.interface"
 
 const CheckAuth: React.FC< PropsWithChildren<AuthProviderProps> > = ({
   Component,
@@ -16,13 +15,13 @@ const CheckAuth: React.FC< PropsWithChildren<AuthProviderProps> > = ({
 
   if (channelState.loadingStatus === 'loading') return null 
 
-  // ? Return page if authorized
+  // ? Return requested page if authorized
   if (channelState.channel) return <React.Fragment> {children} </React.Fragment> 
 
   // ? Redirect if NOT authorized
   if (Component.isPrivatePage) {
-    if (router.pathname !== Endpoints.HOME) {
-      router.replace(Endpoints.HOME)
+    if (router.pathname !== ClientEndpoints.HOME) {
+      router.replace(ClientEndpoints.HOME)
     }
   }
   

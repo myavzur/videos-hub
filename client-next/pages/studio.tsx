@@ -1,4 +1,4 @@
-import { NextPageAuth } from "@/components/providers/AuthProvider/private-route"
+import { NextPageAuth } from "@/components/providers/AuthProvider/private-route.interface"
 import Studio from "@/components/screens/Studio"
 
 const StudioPage: NextPageAuth = () => {

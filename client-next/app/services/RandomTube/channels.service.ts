@@ -8,6 +8,6 @@ export const ChannelsService = {
 	},
 
 	async getChannel(id: IChannel['id']) {
-		return await _axios.get<IChannel[]>(`/channels/id/${id}`)
+		return await _axios.get<IChannel>(`/channels/id/${id}`)
 	}
 }

@@ -1,21 +1,17 @@
 import React, { useEffect } from 'react'
 
+import { IVideo } from '@/types'
+import { HomePageProps } from '../../../../pages'
+
+import Discover from './Discover'
 import Catalog from '@/components/common/Catalog'
 import Layout from '@/components/common/Layout'
 
-import { IVideo } from '@/types'
-
-import Discover from './Discover'
-import { login } from '@/store/slices/channel/channel.actions'
 import { useStoreDispatch, useStoreSelector } from '@/hooks'
 
-export interface HomeProps {
-	randomVideo: IVideo
-	mostPopularVideo: IVideo
-	newVideos: IVideo[]
-}
+import { login } from '@/store/slices/channel/channel.actions'
 
-const Home: React.FC = ({}) => {
+const Home: React.FC<HomePageProps> = ({ topVideo, randomVideo, newVideos }) => {
 	const channel  = useStoreSelector(state => state.channel.channel)
 	const dispatch = useStoreDispatch()
 
@@ -23,14 +19,18 @@ const Home: React.FC = ({}) => {
 	useEffect(() => {
 		if (!channel) {
 			dispatch(
-				login({email: "root@mail.ru",	password: "rootrootroot"})
+				login({email: "perfect@mail.ru",	password: "perfectperfect"})
 			)
-			return alert('Logging...')
-		}
-		console.log(channel)
 
-		alert(`You are logged in as ${channel.email}`)
-	}, [])
+			console.group('%cHome: No Cache or not logged in', 'color: yellow')
+				console.log('%cHome: Logging...', 'color: lime')
+			console.groupEnd()
+		
+			return 
+		}
+
+		console.log(`%cHome: You are logged in as ${channel.email}`, 'color: lime')
+	}, [dispatch, channel])
 
 	return (
 		<Layout
@@ -39,8 +39,15 @@ const Home: React.FC = ({}) => {
 				description: 'RandomTube home page with most popular and new videos.'
 			}}
 		>
-			<Discover />
-			<Catalog />
+			<Discover 
+				randomVideo={randomVideo} 
+				topVideo={topVideo}
+			/>
+			<Catalog 
+				headingProps={{
+					title: '✨News✨'
+				}}
+				videos={newVideos} />
 		</Layout>
 	)
 }

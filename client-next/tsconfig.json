@@ -17,6 +17,7 @@
     // Aliases
     "baseUrl": "./app",
     "paths": {
+      "@/routes/*":     ["routes/*"],
       "@/components/*": ["components/*"],
       "@/providers/*":  ["providers/*"],
       "@/services/*":   ["services/*"],
@@ -25,6 +26,7 @@
       "@/types/*":      ["types/*"],
       "@/hooks":        ["hooks"],
       "@/hooks/*":      ["hooks/*"],
+      "@/utils/*":      ["utils/*"],
       "@/helpers":      ["helpers"],
       "@/helpers/*":    ["helpers/*"],
       "@/store/*":      ["store/*"],

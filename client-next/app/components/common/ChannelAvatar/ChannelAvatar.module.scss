@@ -1,22 +1,35 @@
-.avatar {
-  @apply rounded-full flex items-center justify-center relative;
-  border: 2p solid rgba(255,255,255, 0.5);
+.channel-avatar {
+  @apply 
+    flex 
+    items-center 
+    justify-center 
+    rounded-full 
+    relative;
+  border: 2px solid rgba(255,255,255, 0.5);
   width: 57px;
   height: 57px;
 
-  &.white {
-    border: 2p solid rgba(255,255,255, 0.5);
-
-    .isVerified {
-      @apply text-white;
-    }
-  }
-
-  > span {
+  
+  &__image {
     @apply relative rounded-full;
   }
 
-  .isVerified {
-    @apply text-blue-500 text-sm absolute bottom-0 ring-0;
+  
+  
+  &_verified {
+    @apply 
+    text-blue-500 
+    text-sm 
+    absolute 
+    -bottom-0.5
+    right-0;
+  }
+
+  &_white {
+    border: 2px solid rgba(255,255,255, 0.5);
+  
+    .channel-avatar_verified {
+      @apply text-white;
+    }
   }
 }

@@ -3,14 +3,14 @@ import { HiChartBar, HiCollection, HiHome, HiStar } from 'react-icons/hi'
 
 export interface IMenuLink {
 	title: string
-	link: string
+	path: string
 	icon?: IconType
 	image?: string // Because in my subscriptions there are Images
 }
 
 export const menu: IMenuLink[] = [
-	{ title: 'Home', icon: HiHome, link: '/' },
-	{ title: 'Trends', icon: HiChartBar, link: '/trending' },
-	{ title: 'Channel', icon: HiStar, link: '/my-channel' },
-	{ title: 'Subscription', icon: HiCollection, link: '/subscriptions' }
+	{ title: 'Home', icon: HiHome, path: '/' },
+	{ title: 'Trends', icon: HiChartBar, path: '/trending' },
+	{ title: 'My channel', icon: HiStar, path: '/channels/me' },
+	{ title: 'Subscription', icon: HiCollection, path: '/subscriptions' }
 ]

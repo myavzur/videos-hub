@@ -1,0 +1,11 @@
+.statistics {
+  @apply flex items-center;
+
+  &__stat {
+    @apply text-xs text-gray-500;
+
+    & + & {
+      @apply ml-2
+    }
+  }
+}

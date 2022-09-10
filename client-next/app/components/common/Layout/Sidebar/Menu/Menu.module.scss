@@ -1,20 +1,20 @@
 .menu {
   @apply my-8;
 
-  .title {
+  &__title {
     @apply text-gray-600 mb-7;
   }
 
-  .list {
-    @apply list-none;
-  
-    // Отступы между линками
-    & > li {
-      @apply block mb-8; 
+  &__list {
+    
 
-      &:last-child {
-        @apply mb-0;
+    // ? menu-link
+    > li {
+      @apply mt-8;
+      
+      &::last-child {
+        @apply mt-0;
       }
-    }       
+    }
   }
 }

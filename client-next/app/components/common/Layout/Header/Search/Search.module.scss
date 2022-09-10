@@ -8,7 +8,7 @@
   }
 
 
-  &-field {
+  &__field {
     @apply block relative;
 
     input {
@@ -31,15 +31,15 @@
       transform: translateY(-50%)
     }
   }
-}
 
-.search-result {
-  @apply block-with-shadow rounded-lg animate-scaleIn flex flex-wrap absolute w-full z-20 p-5 mt-1;
-  left: 0;
-  background: #292932;
+  &__result {
+    @apply block-with-shadow rounded-lg animate-scaleIn flex flex-wrap absolute w-full z-20 p-5 mt-1;
+    left: 0;
+    background: #292932;
 
-  > div {
-    @apply mr-4 last:mr-0;
-    width: 23%;
+    > div {
+      @apply mr-4 last:mr-0;
+      width: 23%;
+    }
   }
 }

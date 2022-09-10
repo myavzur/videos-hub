@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic"
 import React, { PropsWithChildren } from "react"
 
-import { AuthProviderProps } from "./private-route"
+import { AuthProviderProps } from "./private-route.interface"
 
 
 /**

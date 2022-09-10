@@ -1,47 +1,54 @@
-import cn from 'classnames'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import cn from 'classnames'
 
+import { useStoreSelector } from '@/hooks'
 import { IMenuLink } from './menu.data'
 
 import styles from './MenuLink.module.scss'
 
 interface MenuItemProps {
-	item: IMenuLink
+	link: IMenuLink,
 }
 
-const MenuLink: React.FC<MenuItemProps> = ({ item }) => {
-	// const { channel } = useAuth()
-
+const MenuLink: React.FC<MenuItemProps> = ({ link }) => {
+	
 	/* 
-    pathname - /c/[id]
-    asPath   - /c/1
+	pathname - /c/[id]
+	asPath   - /c/1
   */
-	const { asPath } = useRouter()
+ 	const channel = useStoreSelector(state => state.channel.channel)
+	const router = useRouter()
 
 	// TODO: Integrate useAuth() from Redux
-	// TODO: Swap item.link to channels/me
-	if (item.link === '/my-channel') {
+	// TODO: Swap link.path to channels/me
+	if ( link.path === '/channels/me' && !channel ) {
 		return null
 	}
 
 	return (
 		<li>
-			<Link href={item.link}>
+			<Link href={link.path}>
 				<a
-					className={cn(styles.menu_link, {
-						[styles.active]: asPath === item.link
-					})}
+					className={cn(
+						styles['menu-link'], 
+						{ [styles['menu-link_active']]: router.asPath === link.path }
+					)}
 				>
-					<div className={cn(styles.content, { [styles.image]: !!item.image })}>
-						{item.icon && <item.icon />}
-						{item.image && (
-							<Image src={item.image} alt={item.title} width={40} height={40} />
+					<div 
+						className={cn(
+							styles['menu-link__content'], 
+							{ [styles['menu-link__content_image']]: !!link.image }
+						)}
+					>
+						{link.icon && <link.icon />}
+						{link.image && (
+							<Image src={link.image} alt={link.title} width={40} height={40} />
 						)}
 					</div>
 
-					<p className={styles.title}> {item.title} </p>
+					<p className={styles['menu-link__title']}> {link.title} </p>
 				</a>
 			</Link>
 		</li>
@@ -49,7 +56,7 @@ const MenuLink: React.FC<MenuItemProps> = ({ item }) => {
 }
 
 // TODO: Refactor conditions with classnames lib???
-// cn(styles.menu_item, {[styles.active]: asPath === item.link}
-// cn( styles.content, {[styles.image]: !!item.image})
+// cn(styles.menu_link, {[styles.active]: asPath === link.path}
+// cn( styles.content, {[styles.image]: !!link.image})
 
 export default MenuLink

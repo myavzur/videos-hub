@@ -9,18 +9,25 @@ import styles from './Menu.module.scss'
 
 interface MenuProps {
 	title: string
-	items: IMenuLink[]
+	links: IMenuLink[]
 }
 
-const Menu: React.FC<MenuProps> = ({ title, items }) => {
+const Menu: React.FC<MenuProps> = ({ title, links }) => {
 	return (
-		<nav className={styles.menu}>
-			<h3 className={styles.title}>{title}</h3>
+		<nav className={styles['menu']}>
+			<h3 className={styles['menu__title']}>{title}</h3>
 
-			<ul className={styles.list}>
-				{items.map(item => (
-					<MenuLink item={item} key={item.link} />
-				))}
+			<ul className={styles['menu__list']}>
+				{
+					links.map(link => {
+						return (
+							<MenuLink 
+								link={link} 
+								key={link.path} 
+							/>
+						)
+					})
+				}
 			</ul>
 
 			<Line />

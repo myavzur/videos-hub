@@ -40,6 +40,7 @@ export class VideosService {
     return await this.videosRepository.save({...video, ...dto})
   }
 
+
   async updateViews(id: Video['id']) {
     const video = await this.findById(id, {isPulic: true})
 
@@ -48,6 +49,7 @@ export class VideosService {
 
     throw new OkException(`Views on video "${video.name}" was incremented by 1`)
   }
+
 
   async updateLikes(id: Video['id']) {
     const video = await this.findById(id, {isPulic: true})
@@ -82,7 +84,6 @@ export class VideosService {
         ...options, isPublic: true  
       },
       relations: includeAllRelations,
-      select:    selectChannelPreview,
       order: { createdAt: 'DESC' }
     })
   }
@@ -95,7 +96,6 @@ export class VideosService {
         views: MoreThan(0)
       },
       relations: includeAllRelations,
-      select:    selectChannelPreview,
 
     })
   }

@@ -1,16 +1,17 @@
 import React from 'react'
 import { RiSearchEyeLine } from 'react-icons/ri'
 
-import { useSearch } from './useSearch'
+import Video from '@/components/common/Video'
+import { useSearch } from '@/hooks/useSearch'
+
 import styles from './Search.module.scss'
-import VideoItem from '@/components/common/VideoItem'
 
 const Search: React.FC = () => {
 	const { handleSearch, term, response } = useSearch(500)
 
 	return (
-		<div className={styles.search}>
-			<label className={styles['search-field']}>
+		<div className={styles['search']}>
+			<label className={styles['search__field']}>
 				<input 
 					type="text" 
 					placeholder='Search for videos...'
@@ -21,20 +22,25 @@ const Search: React.FC = () => {
 				<RiSearchEyeLine fill='white' height={10} width={10}/>
 			</label>
 
-			{response.isLoading && <h1>LOading...</h1>}
-			{response.isSuccess && (
-				<div className={styles['search-result']}>
 
+			{response.isLoading && (
+				<div className={styles['search__result']}>
+					<h1>LOading...</h1>
+				</div>
+			)}
+
+			{response.isSuccess && (
+				<div className={styles['search__result']}>
 					{
-						response.data?.length 
-						? 
-						(
+						response.data?.length ? (
 							response.data.map(video => (
-								<VideoItem isSmall video={video} key={video.id}/>
+								<Video 
+									isSmall 
+									video={video} 
+									key={video.id}
+								/>
 							))
-						)	
-						: 
-						(
+						) : (
 							<div>
 								Videos by <span style={{color: "#6C5ECF"}}> {term}</span> not found!
 							</div>

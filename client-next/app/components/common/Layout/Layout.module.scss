@@ -1,11 +1,13 @@
-.main {
-  @apply flex flex-wrap;
+.layout {
+  display: flex;
+  flex-wrap: wrap;
 
-  .content {
+  &__content {
     width: 82%;
 
-    &_wrapper {
-      @apply pl-6 pr-8;
+    &-wrapper {
+      padding-left: 1.5rem;
+      padding-right: 2rem;
     }
   }
 }
