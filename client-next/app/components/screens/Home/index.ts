@@ -1,4 +1,4 @@
-import Home, { HomeProps } from './Home'
+import Home, { HomePageProps } from './Home'
 
 export default Home
-export type { HomeProps }
+export type { HomePageProps }

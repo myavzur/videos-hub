@@ -13,6 +13,7 @@ import storage from 'redux-persist/lib/storage'
 
 import { apiErrorsMiddleware } from './middlewares/api-errors.middleware'
 import { api } from './slices/api/api.slice'
+import { Namespaces } from './slices/namespaces.enum'
 
 import { rootReducer } from './root.reducer'
 
@@ -22,7 +23,7 @@ import { rootReducer } from './root.reducer'
 const persistConfig = {
 	key: 'root',
 	storage: storage,
-	whitelist: ['channel'] // ? Какие редюсеры записываем в localstorage
+	whitelist: [ Namespaces.channelSlice ] // ? Какие редюсеры записываем в localstorage
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 

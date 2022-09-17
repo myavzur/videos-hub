@@ -1,4 +1,4 @@
-import { IVideo } from '@/types'
+import { IVideo } from '@/types/entities'
 
 import { _axios } from '@/services/RandomTube'
 

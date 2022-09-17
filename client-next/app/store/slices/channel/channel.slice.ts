@@ -1,14 +1,13 @@
-import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
-import { IAuthenticationResponse } from '@/services/RandomTube/auth.service'
-
-import { Namespaces } from '@/store/slices/namespaces.enum'
+import { IChannel } from '@/types/entities'
 
 import { login, logout, register } from './channel.actions'
+import { Namespaces } from '../namespaces.enum'
 
 // Types
 interface ChannelSliceState {
-	channel: IAuthenticationResponse | null
+	channel: IChannel | null
 	loadingStatus: 'idle' | 'loading' | 'error'
 }
 

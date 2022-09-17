@@ -1,4 +1,4 @@
-import { IChannel } from '@/types/channel.interface'
+import { IChannel } from '@/types/entities'
 
 import { _axios } from '@/services/RandomTube/_axios'
 
@@ -21,12 +21,8 @@ export const AuthService = {
 	}
 }
 
-export type IAuthenticationBody = Pick<IChannel, 'email' | 'password'>
-export type IAuthenticationResponse = Omit<
-	IChannel,
-	'password' | 'videos' | 'subscriptions'
->
-
+export type IAuthenticationBody 		= Pick<IChannel, 'email' | 'password'>
+export type IAuthenticationResponse = Omit<IChannel, 'password' | 'videos' | 'subscriptions'>
 interface AuthenticationParams {
 	type: 'login' | 'register'
 	payload: IAuthenticationBody

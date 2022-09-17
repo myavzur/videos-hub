@@ -1,10 +1,13 @@
 import React from 'react'
 
-import styles from './Discover.module.scss'
-import { HomeProps } from '../Home'
-import VideoLarge from '@/components/common/Video/VideoLarge'
+import { HomePageProps } from "@/types/pages/home.interface"
 
-type DiscoverProps = Pick<HomeProps, 'topVideo' | 'randomVideo'>
+import VideoLarge from '@/components/ui/Video/VideoLarge'
+
+import styles from './Discover.module.scss'
+
+
+type DiscoverProps = Pick<HomePageProps, 'topVideo' | 'randomVideo'>
 
 const Discover: React.FC<DiscoverProps> = ({ topVideo, randomVideo }) => {
 	return (

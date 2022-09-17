@@ -1,0 +1,7 @@
+.channel-general {
+  @apply mb-10 w-1/3;
+
+  &__description {
+    @apply text-gray-500 mt-3;
+  }
+}

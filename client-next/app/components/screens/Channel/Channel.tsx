@@ -1,9 +1,13 @@
 import React from "react"
 
-import { IChannel } from "@/types"
-import Layout from "@/components/common/Layout"
-import Catalog from "@/components/common/Catalog"
-import ChannelInfo from "@/components/common/ChannelInfo"
+import { IChannel } from "@/types/entities"
+
+import Layout      from "@/components/ui/Layout"
+import Catalog     from "@/components/ui/Catalog"
+import ChannelInfo from "@/components/ui/ChannelInfo"
+
+import styles from './Channel.module.scss'
+
 
 interface ChannelProps {
   channel: IChannel
@@ -14,18 +18,15 @@ const Channel: React.FC<ChannelProps> = ({ channel }) => {
     <Layout
       meta={{
         title: `${channel.name}'s channel `,
-        description: `
-          ${channel.name} on RandomTube! 
-          Say hello to him, because he is talking: "${channel.description}" (c) ${channel.name}
-        `
+        description: `${channel.name} on RandomTube! Say hello to him, because he is talking: "${channel.description}" (c) ${channel.name}`
       }}
     >
-      <div className="mb-10 w-1/3">
-        <div className="flex items-center gap-12">
-          <ChannelInfo channel={channel}/>
-        </div>
+      <div className={styles['channel-general']}>
+        <ChannelInfo channel={channel}/>
 
-        <article className="text-gray-500 mt-3"> {channel.description} </article>
+        <article className={styles['channel-general__description']}> 
+          {channel.description} 
+        </article>
       </div>
 
       <Catalog

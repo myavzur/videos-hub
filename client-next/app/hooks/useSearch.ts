@@ -1,6 +1,7 @@
+import { ChangeEvent, useState } from "react"
+
 import { useDebounce } from "@/hooks/useDebounce"
 import { videoApi } from "@/store/slices/api/videos.api"
-import { ChangeEvent, useState } from "react"
 
 export const useSearch = (delayBeforeRequest: number) => {
   const [term, setTerm] = useState('')

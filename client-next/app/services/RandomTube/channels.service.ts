@@ -1,4 +1,4 @@
-import { IChannel } from '@/types'
+import { IChannel } from '@/types/entities'
 
 import { _axios } from '@/services/RandomTube'
 

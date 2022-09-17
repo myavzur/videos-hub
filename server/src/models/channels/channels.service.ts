@@ -74,7 +74,7 @@ export class ChannelsService {
   // ! FindBy, DeleteBy, little helpers...
   
   //** Throws new NotFoundException if user doesn't exist by itself!!! */
-  async findById(id: any) {
+  async findById(id: Channel['id']) {
     const channel = await this.channelsRepository.findOne({
       where: {id},
       relations: {

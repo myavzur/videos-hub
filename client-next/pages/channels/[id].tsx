@@ -4,7 +4,7 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import { NextPageAuth } from "@/components/providers/AuthProvider/private-route.interface"
 import { ChannelsService } from "@/services/RandomTube"
 
-import { IChannel } from "@/types"
+import { IChannel } from "@/types/entities"
 import Channel from "@/components/screens/Channel"
 
 interface ChannelPageProps {

@@ -25,7 +25,7 @@ export class ChannelsController {
   @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Получить публичную информацию о чьем-либо канале." })
   async getById(
-    @Param('id') id: Channel['id']
+    @Param('channelId') id: Channel['id']
   ) {
     return this.channelsService.findById(id)
   }

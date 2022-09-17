@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 
-import { IVideo } from '@/types'
-import { HomePageProps } from '../../../../pages'
+import { HomePageProps } from '@/types/pages/home.interface'
 
 import Discover from './Discover'
-import Catalog from '@/components/common/Catalog'
-import Layout from '@/components/common/Layout'
+import Catalog from '@/components/ui/Catalog'
+import Layout from '@/components/ui/Layout'
 
 import { useStoreDispatch, useStoreSelector } from '@/hooks'
 
