@@ -52,6 +52,7 @@ export class ChannelsService {
     if (fromChannelId === toChannelId) {
       throw new BadRequestException('Are you fucking coward? Don\'t subscribe to yourself.')
     }
+
     const params = {
       fromChannel: {id: fromChannelId},
       toChannel: {id: toChannelId}
@@ -65,6 +66,7 @@ export class ChannelsService {
     }
 
     await this.subscriptionsRepository.delete(params)
+
     return { result: SubscriptionResults.UNSUBSCRIBED }    
   }
 
@@ -79,7 +81,8 @@ export class ChannelsService {
       where: {id},
       relations: {
         videos: true,
-        subscriptions: { toChannel: true }
+        subscriptions: {toChannel: true}, 
+        subscribers:   {fromChannel: true}
       },
       order: { createdAt: 'DESC' }
     })
@@ -106,6 +109,11 @@ export class ChannelsService {
   async findByEmailWithPassword(email: Channel['email']) {
     const channel = await this.channelsRepository.findOne({
       where: {email},
+      relations: {
+        videos: true,
+        subscriptions: {toChannel: true}, 
+        subscribers:   {fromChannel: true}
+      },
       select: {
         id: true, 
         email: true, password: true,
@@ -121,7 +129,12 @@ export class ChannelsService {
   
 
   async findAll() {
-    return await this.channelsRepository.find()
+    return await this.channelsRepository.find({
+      relations: {
+        subscriptions: {toChannel: true}, 
+        subscribers: {fromChannel: true}}
+      }
+    )
   }
 
 }

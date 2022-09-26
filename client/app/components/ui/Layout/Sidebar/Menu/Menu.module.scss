@@ -1,0 +1,20 @@
+.menu {
+  @apply my-8;
+
+  &__title {
+    @apply text-gray-600 mb-7;
+  }
+
+  &__list {
+    
+
+    // ? menu-link
+    > li {
+      @apply mt-8;
+      
+      &::last-child {
+        @apply mt-0;
+      }
+    }
+  }
+}

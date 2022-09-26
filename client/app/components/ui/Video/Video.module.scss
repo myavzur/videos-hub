@@ -1,0 +1,50 @@
+.video {
+  @apply relative rounded-2xl overflow-hidden;
+  background-color: #1e1f29;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+
+  &__thumbnail {
+    @apply relative;
+  }
+
+  
+  &__information {
+    @apply p-4;
+
+    &-channel-name {
+      @apply font-normal text-gray-500;
+
+      font-size: 1.15rem;
+    }
+
+    &-name {
+      @apply text-white font-medium my-2.5;
+      font-size: 1.3rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; // 2 columns
+      -webkit-box-orient: vertical;
+    }
+  }
+
+
+
+  &__channel-avatar {
+    @apply absolute;
+    transform: translateY(-50%);
+    right: 5%;
+  }
+
+
+
+  &_small {
+    .video__information {
+      .video__name {
+        @apply mt-3;
+
+        font-size: 1.1rem;
+        -webkit-line-clamp: 1; // 2 columns
+      }
+    }
+  }
+}

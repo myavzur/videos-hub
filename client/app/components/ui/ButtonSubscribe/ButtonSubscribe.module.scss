@@ -1,0 +1,15 @@
+.button {
+  @apply flex items-center justify-center rounded-lg p-3 text-white bg-clickable transition-colors duration-300;
+
+  & > svg {
+    @apply mr-2 text-base;
+  }
+  
+  &_subscribed {
+    @apply bg-gray-400;
+  }
+  
+  &:hover {
+    @apply bg-opacity-100;
+  }
+}

@@ -1,9 +1,0 @@
-.catalog {
-  &__heading {
-    @apply mb-6;
-  }
-
-  &__videos {
-    @apply grid grid-cols-4 grid-flow-row gap-5;
-  }
-}

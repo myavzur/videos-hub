@@ -20,7 +20,6 @@ export class AuthService {
       throw new BadRequestException('Channel with this email already exists!')
     }
 
-    // channelsService.createChannel
     const channel = await this.channelsService.createChannel(dto)
 
     await this.setSession(session, channel)
