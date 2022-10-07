@@ -3,13 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import cn from 'classnames'
 
-import { useStoreSelector } from '@/hooks'
+import { useAuth } from '@/hooks'
 
 import { MenuLinkProps } from './MenuLink.interface'
 import styles from './MenuLink.module.scss'
 
 const MenuLink: React.FC<MenuLinkProps> = ({ link }) => {
- 	const channel = useStoreSelector(state => state.channel.channel)
+ 	const { channel } = useAuth()
 	const router 	= useRouter()
 
 	let isMustBeActive = false // For /channels/me

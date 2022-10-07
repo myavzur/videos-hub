@@ -13,7 +13,7 @@ const getErrorMessage = (error: any) => {
 
     console.log(`%calert-error.ts ~ line 13 ~ getErrorMessage ~ message: ${message}`, "color: red")
 
-    return (typeof message === 'object') ? message : message[0]
+    return ((typeof(message) !== 'string') && message.length) ? message[0] : message
   }
 
   throw new Error(`Unhandled error, ${error} | helpers/alert-error.ts`)

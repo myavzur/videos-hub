@@ -1,0 +1,35 @@
+.channel-avatar {
+  @apply 
+    flex 
+    items-center 
+    justify-center 
+    rounded-full 
+    relative;
+  border: 2px solid rgba(255,255,255, 0.5);
+  width: 57px;
+  height: 57px;
+
+  
+  &__image {
+    @apply relative rounded-full;
+  }
+
+  
+  
+  &_verified {
+    @apply 
+    text-blue-500 
+    text-sm 
+    absolute 
+    -bottom-0.5
+    right-0;
+  }
+
+  &_white {
+    border: 2px solid rgba(255,255,255, 0.5);
+  
+    .channel-avatar_verified {
+      @apply text-white;
+    }
+  }
+}

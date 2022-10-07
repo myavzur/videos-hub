@@ -1,13 +1,15 @@
-import ButtonSubscribe from "@/components/ui/ButtonSubscribe"
-import ChannelInfo from "@/components/ui/ChannelInfo"
-import { useStoreSelector } from "@/hooks"
-import { videoApi } from "@/store/slices/api/videos.api"
-import { formatNumToShort } from "@/utils/format-num-to-short"
 import dayjs from "dayjs"
 import React from "react"
 import { HiCalendar } from "react-icons/hi"
 import { IoMdEye } from "react-icons/io"
 import { RiHeart2Fill } from "react-icons/ri"
+
+import ButtonSubscribe from "@/components/ui/ButtonSubscribe"
+import Channel from "@/components/ui/Channel"
+
+import { videoApi } from "@/store/slices/api/videos.api"
+
+import { formatNumToShort } from "@/utils/format-num-to-short"
 
 import { DetailsProps } from './Details.interface'
 import styles from './Details.module.scss'
@@ -23,7 +25,7 @@ const Details: React.FC<DetailsProps> = ({ video }) => {
   return (
     <div className={styles.details}>
       <div>
-        <ChannelInfo channel={video.channel} />
+        <Channel.Info channel={video.channel} />
 
         <h1> {video.name} </h1>
 

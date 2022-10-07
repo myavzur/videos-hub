@@ -1,0 +1,26 @@
+.field {
+  @apply block w-full;
+  font-size: 0.8rem;
+  color: #C1C2C5;
+
+  .legend {
+    @apply mb-1 font-normal;
+  }
+  
+  .description {
+    @apply mb-1 text-gray-500 font-light;
+    letter-spacing: 0.5px;
+    font-size: 0.66rem;
+  }
+  
+  .input {
+    @apply border-blue-400 border-2 border-opacity-0 py-2 px-3 w-full rounded-sm outline-none;
+    background-color: #2C2E33;
+    transition: 0.5s all;
+    
+    &:hover {
+      @apply border-blue-400 border-2 border-opacity-100;
+    }
+  }
+  
+}

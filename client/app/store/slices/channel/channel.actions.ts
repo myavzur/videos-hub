@@ -15,17 +15,10 @@ export const register = createAsyncThunk<IAuthenticationResponse, IAuthenticatio
 	`${Namespaces.channelSlice}/register`, 
 	async (payload, thunkApi) => {
 		try {
-			const response = await AuthService.authenticate({
-				type: 'register',
-				payload
-			})
+			return await AuthService.authenticate({ type: 'register', payload })
 
-			toastr.success('Registration', 'Successfuly registrated. 👌')
-
-			return response
 		} catch (e) {
 			alertError(e, 'Registration')
-
 			return thunkApi.rejectWithValue(e)
 		}
 	}
@@ -35,11 +28,7 @@ export const login = createAsyncThunk<IAuthenticationResponse, IAuthenticationBo
 	`${Namespaces.channelSlice}/loging`, 
 	async (payload, thunkApi) => {
 		try {
-			const response = await AuthService.authenticate({ type: 'login', payload })
-
-			toastr.success('Login', 'Successfuly login. 🤾')
-			
-			return response
+			return await AuthService.authenticate({ type: 'login', payload })
 		} catch (e) {
 			alertError(e, 'Login')
 			return thunkApi.rejectWithValue(e)

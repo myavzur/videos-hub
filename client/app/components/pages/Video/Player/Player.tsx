@@ -19,7 +19,7 @@ const Player: React.FC<PlayerProps> = ({ videoPath }) => {
   return (
     <div className={styles.player}>
       <video
-        className={styles['player-inner']}
+        className={styles['player__video']}
         ref={ref}
         src={`${videoPath}#t=8`} // ? 8th second to prevent black screen
         preload='metadata'

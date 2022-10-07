@@ -8,18 +8,13 @@ import { AuthProviderProps } from "./private-route.interface"
   * ! Должно работать только с клиентской частью Next поэтому используем dynamic. 
   * ? Потому что используем API для авторизации.
 */
-const CheckAuthDynamic = dynamic(
-  () => import('./CheckAuth'), 
-  { 
-    ssr: false
-  }
-)
+const CheckAuthDynamic = dynamic(() => import('./CheckAuth'), { ssr: false })
 
 
 /**
  * * Returns age if user authorized, overwise - redirects to home page
  */
-const AuthProvider: React.FC< PropsWithChildren<AuthProviderProps> > = ({ 
+const AuthProvider: React.FC<PropsWithChildren<AuthProviderProps> > = ({ 
   Component, 
   children
 }) => {

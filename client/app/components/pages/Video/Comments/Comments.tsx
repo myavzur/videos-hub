@@ -1,4 +1,4 @@
-import { useStoreSelector } from "@/hooks"
+import { useAuth, useStoreSelector } from "@/hooks"
 import React from "react"
 
 import Comment from "./Comment"
@@ -8,7 +8,7 @@ import styles from './Comments.module.scss'
 import Form from "./Form"
 
 const Comments: React.FC<CommentsProps> = ({ comments, videoId }) => {
-  const channel = useStoreSelector(state => state.channel.channel)
+  const { channel } = useAuth()
   
   return (
     <div className={styles.comments}>

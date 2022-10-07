@@ -8,9 +8,9 @@ import { BiEdit } from 'react-icons/bi'
 import { RiDeleteBin2Line } from "react-icons/ri"
 import cn from "classnames"
 
+import Channel from '@/components/ui/Channel'
 import Duration from "./Duration"
 import Statistics from "./Statistics"
-import ChannelAvatar from "../ChannelAvatar"
 
 import { VideoProps } from "./Video.interface"
 import styles from './Video.module.scss'
@@ -63,7 +63,7 @@ const Video: React.FC<VideoProps> = ({ video, isSmall, studioProps }) => {
 
         <div className={styles['video__channel-avatar']}>
           {video?.channel?.avatarPath &&  (
-            <ChannelAvatar channel={video.channel} color='white' />
+            <Channel.Avatar channel={video.channel} color='white' />
           )}
         </div>
       </div>
@@ -78,7 +78,7 @@ const Video: React.FC<VideoProps> = ({ video, isSmall, studioProps }) => {
           )
         }
 
-        <Link href={`videos/${video.id}`}>
+        <Link href={`/videos/${video.id}`}>
           <a className={styles['video__information-name']}> {video.name} </a>
         </Link>
 

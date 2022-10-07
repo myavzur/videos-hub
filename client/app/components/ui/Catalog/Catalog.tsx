@@ -36,9 +36,7 @@ const Catalog: React.FC<CatalogProps> = ({ videos, studioProps, headingProps }) 
 						videos.map(video => (
 							<Video 
 								video={video}
-
 								studioProps={studioProps}
-								
 								key={video.id} 
 							/>
 						))

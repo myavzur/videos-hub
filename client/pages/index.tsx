@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }
   catch (e) {
-    console.log(`%cCould't call server! ${e}`, 'color: red')
+    console.log(`%cCould't call server from HomePage! ${e}`, 'color: red')
     return {
       props: {
         newVideos: [],

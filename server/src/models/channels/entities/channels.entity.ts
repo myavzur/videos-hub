@@ -33,7 +33,7 @@ export class Channel {
   @Column('varchar', {select: false, length: 255})
   password: string
 
-  @Column('varchar', {default: '', length: 255})
+  @Column('varchar', {default: '', length: 255, nullable: false})
   avatarPath: string
 
   @Column('varchar', {default: '', length: ChannelLimits.NAME_LEN})

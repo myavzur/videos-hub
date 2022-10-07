@@ -1,7 +1,7 @@
 import React from 'react'
 
-import ChannelAvatar from '@/components/ui/ChannelAvatar'
-import { useStoreSelector } from '@/hooks'
+import ChannelAvatar from '@/components/ui/Channel/Avatar'
+import { useAuth } from '@/hooks'
 
 import Search from './Search'
 
@@ -10,14 +10,13 @@ import ProfileMenu from './ProfileMenu/ProfileMenu'
 
 // TODO: Make header
 const Header: React.FC = () => {
-	const channel = useStoreSelector(state => state.channel.channel)
+	const { channel } = useAuth()
 
 	return (
 		<header className={styles.header}>
 			<Search />
 
 			<div className='text-clickable'>
-				{/* <ProfileMenu/> */}
 				{channel && (
 					<ChannelAvatar channel={channel}/>
 				)}

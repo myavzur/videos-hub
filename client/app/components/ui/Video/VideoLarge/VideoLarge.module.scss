@@ -31,10 +31,11 @@
     max-width: 20rem;
 
     &-name {
-      @apply text-lg leading-snug mb-8 mt-0 block;
-      -webkit-line-clamp: 4;
-    }
+      @apply text-lg leading-snug mb-8 mt-0;
+      -webkit-line-clamp: 2;
 
+    }
+    
     &-channel-name {
       @apply text-white text-tiny mt-2;
     }

@@ -1,4 +1,4 @@
-import { useStoreSelector } from '@/hooks'
+import { useAuth, useStoreSelector } from '@/hooks'
 import { api } from '@/store/slices/api/api.slice'
 import Link from 'next/link'
 import React from 'react'
@@ -11,8 +11,7 @@ import styles from './Sidebar.module.scss'
 
 // TODO: Вывести меню через БД???
 const Sidebar: React.FC = () => {
-	const channel = useStoreSelector(state => state.channel.channel)
-
+	const { channel } = useAuth()
 	const { data } = api.useGetMyChannelQuery(null, {
 		skip: !channel
 	})

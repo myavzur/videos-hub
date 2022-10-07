@@ -7,16 +7,16 @@ export enum SubscriptionResults {
 
 export interface IChannel extends IBase {
 	email: string
-	password?: string
-	avatarPath?: string
 	name: string
+	avatarPath: string
 	description?: string
+	password?: string
 
-	isVerified?: boolean
+	isVerified: boolean
 	subscribersCount: number
 
-	videos?: IVideo[]
 	subscriptions: ISubscription[]
+	videos?: IVideo[]
 }
 
 export interface ISubscription extends IBase {

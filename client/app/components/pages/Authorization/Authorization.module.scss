@@ -1,0 +1,34 @@
+.layout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: #000 url('/assets/images/auth-bg.png');
+  background-size: cover;
+
+
+  .content {
+    display: flex;
+    width: 53rem;
+    min-height: 43rem;
+    
+    .random-video {
+      @apply bg-secondary;
+      flex-basis: 50%;
+    }
+  
+    .form {
+      flex-basis: 50%;
+      background: #1A1B1E;
+      padding: 2.5rem;
+
+      &__heading {
+        font-size: 1.875rem;
+        padding-bottom: 2rem;
+        font-weight: 700;
+      }
+
+    }
+  }
+}

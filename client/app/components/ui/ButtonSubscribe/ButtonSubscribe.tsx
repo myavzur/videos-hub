@@ -4,7 +4,7 @@ import cn from "classnames"
 
 import { api } from "@/store/slices/api/api.slice"
 
-import { useStoreSelector } from "@/hooks"
+import { useAuth } from "@/hooks"
 import { SubscriptionResults } from "@/types/entities/channel.interface"
 
 import { ButtonSubscribeProps } from "./ButtonSubscribe.interface"
@@ -12,7 +12,7 @@ import styles from './ButtonSubscribe.module.scss'
 
 
 const ButtonSubscribe: React.FC<ButtonSubscribeProps> = ({ toChannelId }) => {
-  const channel = useStoreSelector(state => state.channel.channel)
+  const { channel } = useAuth()
 
   const { data: profile } = api.useGetMyChannelQuery(null, {skip: !channel})
   const [ subscribe, subscribeStatus ] = api.useSubscribeMutation()

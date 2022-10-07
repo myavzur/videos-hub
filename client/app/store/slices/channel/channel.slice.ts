@@ -4,7 +4,6 @@ import { ChannelState } from './channel.interface'
 import { login, logout, register } from './channel.actions'
 
 import { Namespaces } from '../namespaces.enum'
-import { api } from '../api/api.slice'
 
 
 const initialState: ChannelState = {

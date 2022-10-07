@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 
-import { useStoreSelector } from '@/hooks'
+import { useAuth } from '@/hooks'
 import { api } from '@/store/slices/api/api.slice'
 
 
 const ProfileMenu: React.FC = () => {
-	const channel = useStoreSelector(state => state.channel.channel)
+	const { channel } = useAuth()
 
 	const { data, isLoading } = api.useGetMyChannelQuery(null, {
 		skip: !channel

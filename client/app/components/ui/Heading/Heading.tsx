@@ -1,16 +1,12 @@
-import React from "react"
+import React, { PropsWithChildren } from "react"
 
+import { HeadingProps } from "./Heading.interface"
 import styles from './Heading.module.scss'
 
-
-interface HeadingProps {
-  children?: string
-}
-
-const Heading: React.FC<HeadingProps> = ({ children }) => {
+const Heading: React.FC< PropsWithChildren<HeadingProps> > = ({ Type = 'h1', children }) => {
   return (
     <span className={styles.heading}>
-      <h2 className={styles['heading__title']}> {children} </h2>
+      <Type className={styles['heading__title']}> {children} </Type>
     </span>
   )
 }

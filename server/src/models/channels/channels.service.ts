@@ -24,7 +24,8 @@ export class ChannelsService {
 
     const newChannel = await this.channelsRepository.save({
       email: dto.email,
-      password: $password
+      password: $password,
+      avatarPath: `/uploads/avatars/placeholder-0.jpg`
     })
 
     return newChannel

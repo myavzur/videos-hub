@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import React from "react"
 
-import ChannelAvatar from "@/components/ui/ChannelAvatar"
+import Channel from "@/components/ui/Channel"
 import Duration from "@/components/ui/Video/Duration"
 import Statistics from "@/components/ui/Video/Statistics"
 
@@ -35,7 +35,10 @@ const VideoLarge: React.FC<VideoLargeProps> = ({ video }) => {
 
         {
           video.channel?.avatarPath && (
-            <ChannelAvatar channel={video.channel} color='white' /> 
+            <Channel.Avatar 
+              channel={video.channel} 
+              color='white' 
+            /> 
           )
         }
 

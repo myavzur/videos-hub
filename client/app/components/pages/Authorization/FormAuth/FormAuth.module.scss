@@ -1,0 +1,14 @@
+.form {
+  &__field {
+    @apply mb-6;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__submit {
+    @apply border-blue-400 border-2 w-full p-1 rounded-sm;
+    border-width: 1px;
+  }
+}

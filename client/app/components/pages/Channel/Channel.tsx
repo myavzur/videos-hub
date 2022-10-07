@@ -1,15 +1,15 @@
 import React from "react"
 
-import Layout      from "@/components/ui/Layout"
-import Catalog     from "@/components/ui/Catalog"
-import ChannelInfo from "@/components/ui/ChannelInfo"
+import Layout  from "@/components/ui/Layout"
+import Catalog from "@/components/ui/Catalog"
+import Channel from "@/components/ui/Channel"
 import ButtonSubscribe from "@/components/ui/ButtonSubscribe"
 
 import { ChannelProps } from "./Channel.interface"
 import styles from './Channel.module.scss'
 
 
-const Channel: React.FC<ChannelProps> = ({ channel }) => {
+const ChannelPage: React.FC<ChannelProps> = ({ channel }) => {
   return (
     <Layout
       meta={{
@@ -19,7 +19,7 @@ const Channel: React.FC<ChannelProps> = ({ channel }) => {
     >
       <div className={styles['channel-general']}>
         <div className={styles['channel-general__top']}>
-          <ChannelInfo channel={channel}/>
+          <Channel.Info channel={channel}/>
           <ButtonSubscribe toChannelId={channel.id} />
         </div>
 
@@ -38,4 +38,4 @@ const Channel: React.FC<ChannelProps> = ({ channel }) => {
   )
 }
 
-export default Channel
+export default ChannelPage

@@ -21,7 +21,7 @@ export const AuthService = {
 	}
 }
 
-export type IAuthenticationBody 		= Pick<IChannel, 'email' | 'password'>
+export type IAuthenticationBody 		= Pick<Required<IChannel>, 'email' | 'password'>
 export type IAuthenticationResponse = Omit<IChannel, 'password' | 'videos'>
 interface AuthenticationParams {
 	type: 'login' | 'register'
