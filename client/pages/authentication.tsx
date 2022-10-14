@@ -1,14 +1,14 @@
 import { NextPageAuth } from "@/components/providers/AuthProvider/private-route.interface"
 
-import Authorization, { AuthorizationProps } from "@/components/pages/Authorization"
+import Authentication, { AuthenticationProps } from "@/components/pages/Authentication"
 import { GetStaticProps } from "next"
 import { VideosService } from "@/services/RandomTube"
 import { IVideo } from "@/types/entities"
 import { shuffle } from "lodash"
 
-const AuthorizationPage: NextPageAuth<AuthorizationProps> = ({ randomVideo }) => {
+const AuthenticationPage: NextPageAuth<AuthenticationProps> = ({ randomVideo }) => {
   return (
-    <Authorization randomVideo={randomVideo} />
+    <Authentication randomVideo={randomVideo} />
   )
 }
 
@@ -19,18 +19,18 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
       props: {
         randomVideo: shuffle(topVideos)[0]
-      } as AuthorizationProps
+      } as AuthenticationProps
     }
   }
   catch (e) {
-    console.log(`%cCould't call server from AuthorizationPage! ${e}`, 'color: red')
+    console.log(`%cCould't call server from AuthenticationPage! ${e}`, 'color: red')
 
     return {
       props: {
         randomVideo: {} as IVideo
-      } as AuthorizationProps 
+      } as AuthenticationProps 
     }
   }
 }
 
-export default AuthorizationPage
+export default AuthenticationPage

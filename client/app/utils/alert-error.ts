@@ -11,10 +11,14 @@ const getErrorMessage = (error: any) => {
   if (error?.response?.data?.message) {
     const message = error.response.data.message 
 
-    console.log(`%calert-error.ts ~ line 13 ~ getErrorMessage ~ message: ${message}`, "color: red")
+    console.log(`%calert-error.ts ~ line 14 ~ getErrorMessage ~ message: ${message}`, "color: hotpink")
 
     return ((typeof(message) !== 'string') && message.length) ? message[0] : message
   }
+
+  if (error?.message) return error.message
+
+  console.log(`%calert-error.ts ~ line 21 ~ getErrorMessage ~ unhandled error: ${error}`, "color: red")
 
   throw new Error(`Unhandled error, ${error} | helpers/alert-error.ts`)
 }

@@ -1,15 +1,10 @@
 .layout {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  background: #000 url('/assets/images/auth-bg.png');
-  background-size: cover;
+  @apply flex justify-center items-center w-screen h-screen bg-cover;
+  background: #000 url('/assets/images/auth-form-bg.jpeg');
 
 
   .content {
-    display: flex;
+    @apply flex rounded-xl overflow-hidden;
     width: 53rem;
     min-height: 43rem;
     

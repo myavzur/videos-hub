@@ -1,9 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { ChannelState } from './channel.interface'
 import { login, logout, register } from './channel.actions'
 
 import { Namespaces } from '../namespaces.enum'
+import { IChannel } from '@/types/entities'
 
 
 const initialState: ChannelState = {
@@ -11,10 +12,19 @@ const initialState: ChannelState = {
 	loadingStatus: 'idle'
 }
 
-export const { reducer } = createSlice({
+const channelSlice = createSlice({
 	name: Namespaces.channelSlice,
 	initialState,
-	reducers: {},
+	reducers: {
+		/**
+		 * ! DONT USE IT IF YOU NOT SURE WHAT ARE YOU DOING
+		 * * Uses inside api-errors middleware to clear state.channel if it's not authorized
+		 */
+		clearChannel : (state) => {
+			state.channel = null
+			state.loadingStatus = 'idle'
+		}
+	},
 	extraReducers: builder => {
 		builder
 			// * Register
@@ -54,3 +64,7 @@ export const { reducer } = createSlice({
 			})
 	}
 })
+
+export const { reducer } = channelSlice
+
+export const { clearChannel  } = channelSlice.actions

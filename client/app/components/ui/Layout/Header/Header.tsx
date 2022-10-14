@@ -4,9 +4,9 @@ import ChannelAvatar from '@/components/ui/Channel/Avatar'
 import { useAuth } from '@/hooks'
 
 import Search from './Search'
+import AuthorizationLinks from './AuthorizationLinks'
 
 import styles from './Header.module.scss'
-import ProfileMenu from './ProfileMenu/ProfileMenu'
 
 // TODO: Make header
 const Header: React.FC = () => {
@@ -17,9 +17,10 @@ const Header: React.FC = () => {
 			<Search />
 
 			<div className='text-clickable'>
-				{channel && (
-					<ChannelAvatar channel={channel}/>
-				)}
+				{channel 
+					? <ChannelAvatar channel={channel}/>
+					: <AuthorizationLinks/>
+				}
 			</div>
 		</header>
 	)

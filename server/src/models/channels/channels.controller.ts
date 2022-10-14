@@ -22,7 +22,6 @@ export class ChannelsController {
 
   // Get someone channel 🍈
   @Get('id/:channelId')
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Получить публичную информацию о чьем-либо канале." })
   async getById(
     @Param('channelId') id: Channel['id']

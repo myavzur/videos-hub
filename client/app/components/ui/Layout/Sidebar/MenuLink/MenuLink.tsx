@@ -10,16 +10,17 @@ import styles from './MenuLink.module.scss'
 
 const MenuLink: React.FC<MenuLinkProps> = ({ link }) => {
  	const { channel } = useAuth()
-	const router 	= useRouter()
+	const router 			= useRouter()
 
-	let isMustBeActive = false // For /channels/me
+	//  * For /channels/me
+	let isMustBeActive = false 
 
-	if ( link.path === `/channels/me` ) {
-		if (!channel) {
-			return null
-		}
-		
-		link.path = `/channels/${channel.id}`
+	if ( link.isPrivate && !channel ) {
+		return null
+	}
+
+	if ( link.path === `/channels/me` ) {		
+		link.path = `/channels/${channel!.id}`
 		isMustBeActive = true
 	}
 

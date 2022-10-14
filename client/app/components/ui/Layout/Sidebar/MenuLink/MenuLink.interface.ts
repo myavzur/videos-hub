@@ -5,6 +5,7 @@ export interface MenuLinkProps {
     title: string
     path: string
     icon?: IconType
-    image?: string // Because in my subscriptions there are Images
+    image?: string // * Because in subscriptions there are Images
+    isPrivate?: boolean // * Only Authorized user could access this link?
   }
 }

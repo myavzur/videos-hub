@@ -4,16 +4,16 @@ import React from "react"
 import FormAuth from "./FormAuth"
 import VideoRandom from "./VideoRandom"
 
-import { AuthorizationProps } from "./Authorization.interface"
-import styles from './Authorization.module.scss'
+import { AuthenticationProps } from "./Authentication.interface"
+import styles from './Authentication.module.scss'
 import Head from "next/head"
 
 
-const Authorization: React.FC<AuthorizationProps> = ({ randomVideo }) => {  
+const Authentication: React.FC<AuthenticationProps> = ({ randomVideo }) => {  
   return (
     <React.Fragment>
       <Head>
-				<title>Authorization</title>
+				<title>Authentication</title>
 				<meta name='description' content="Join RandomTube today" />
 			</Head>
       
@@ -36,4 +36,4 @@ const Authorization: React.FC<AuthorizationProps> = ({ randomVideo }) => {
   )
 }
 
-export default Authorization
+export default Authentication

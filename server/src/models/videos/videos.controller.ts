@@ -16,7 +16,6 @@ export class VideosController {
 
   
   @Get()
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Получить все видео. (Публичные)" })
   async findAll() {
     return await this.videosService.findAll()
@@ -24,7 +23,6 @@ export class VideosController {
 
   // Search video by some term (?term=34kf;]d;kfje)
   @Get('search')
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Получить все видео по запрашиваемому названию." })
   async searchByTerm(
     @Query('term') term?: string
@@ -34,7 +32,6 @@ export class VideosController {
 
   // Get most populars by views
   @Get('most-populars')
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Получить популярные видео. (По просмотрам)" })
   async getMostPopulars() {
     return await this.videosService.findMostPopulars()
@@ -43,7 +40,6 @@ export class VideosController {
 
   // Get video by id
   @Get('id/:videoId')
-  @UseGuards(AuthGuard)
   @ApiOperation({ summary: "Получить определенное видео по ID." })
   async getById(
     @Param('videoId') videoId: Video['id']

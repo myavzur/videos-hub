@@ -2,7 +2,6 @@ import { useRouter } from "next/router"
 import React, { PropsWithChildren } from "react"
 
 import { useAuth } from "@/hooks"
-import { ClientEndpoints } from "@/routes/endpoints.enum"
 import { AuthProviderProps } from "./private-route.interface"
 
 const CheckAuth: React.FC< PropsWithChildren<AuthProviderProps> > = ({ Component, children }) => {
@@ -25,9 +24,7 @@ const CheckAuth: React.FC< PropsWithChildren<AuthProviderProps> > = ({ Component
 
   // ? Redirect if NOT authorized
   if (Component.isPrivatePage) {
-    if (router.pathname !== ClientEndpoints.HOME) {
-      router.replace(ClientEndpoints.HOME)
-    }
+    router.replace('/')
   }
   
 

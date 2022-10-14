@@ -1,5 +1,5 @@
 import { IVideo } from "@/types/entities";
 
-export interface AuthorizationProps {
+export interface AuthenticationProps {
   randomVideo: IVideo
 }
