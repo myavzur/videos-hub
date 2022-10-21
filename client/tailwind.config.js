@@ -16,6 +16,8 @@ module.exports = {
           800: '#353340',
           900: '#272532'
         },
+        // ? Previous: #1c1b26;
+        root: '#131319',
         secondary:  '#278BD7',
         clickable: '#FF7652',
         active: '#32A8E2',

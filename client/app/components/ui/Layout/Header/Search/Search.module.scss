@@ -33,7 +33,7 @@
   }
 
   &__result {
-    @apply block-with-shadow rounded-lg animate-scaleIn flex flex-wrap absolute w-full z-20 p-5 mt-1;
+    @apply rounded-lg animate-scaleIn flex flex-wrap absolute w-full z-20 p-5 mt-1;
     left: 0;
     background: #292932;
 

@@ -22,14 +22,14 @@
     @apply text-white;
 
     .menu-link__content {
-      @apply bg-clickable shadow;
+      @apply bg-secondary shadow;
     }
   }
   
 
   &::before {
     @apply 
-      h-full w-1 rounded-lg bg-clickable absolute -left-7 top-0 -translate-x-1
+      h-full w-1 rounded-lg bg-secondary absolute -left-7 top-0 -translate-x-1
       transition-all duration-500;
     content: ''
   } // Make line behind the scene

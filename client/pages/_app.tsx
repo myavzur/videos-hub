@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import type { AppProps } from 'next/app'
 import NextProgressBar from 'nextjs-progressbar'
-import ReduxToastr from 'react-redux-toastr'
 
 import PersistedStoreProvider from '@/components/providers/PersistedStoreProvider'
 
@@ -13,8 +12,8 @@ function MyApp({ Component, pageProps }: AppProps) {
     <React.Fragment>
 
       <NextProgressBar
-        color='#ff7652'
-        startPosition={0.3}
+        color='#278BD7'
+        startPosition={1}
         stopDelayMs={500}
         height={3}
       />

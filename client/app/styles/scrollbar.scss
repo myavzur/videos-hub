@@ -1,0 +1,14 @@
+::-webkit-scrollbar-track {
+  @apply bg-root rounded-lg;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 0.5rem;
+  background: linear-gradient(60deg, #131319, #278BD7);
+  animation: animatedgradient 5s ease alternate infinite;
+  background-size: 300% 300%;
+  background-position: fixed;
+}
+::-webkit-scrollbar {
+  width: 4px;
+  height: 0px;
+}

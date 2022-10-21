@@ -6,8 +6,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 
+
 * {
   box-sizing: border-box;
+
+  // ! NEVER HIDE THE SCROLLBAR!!!
+  // TODO: DELETE THIS BULLSHIT
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+
+  &::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
 }
 
 html,
@@ -18,8 +28,8 @@ body {
 }
 
 body {
+  @apply bg-root;
   font-family: 'Inter', sans-serif;
-  background-color: #1c1b26; 
 }
 
 a {

@@ -15,12 +15,11 @@ const Header: React.FC = () => {
 		<header className={styles.header}>
 			<Search />
 
-			<div className='text-clickable'>
-				{channel 
-					? <ChannelAvatar channel={channel}/>
-					: <p> NOT_AUTHORIZED </p>
-				}
-			</div>
+			<button></button>
+			{channel 
+				? <ChannelAvatar channel={channel}/>
+				: <p> NOT_AUTHORIZED </p>
+			}
 		</header>
 	)
 }
