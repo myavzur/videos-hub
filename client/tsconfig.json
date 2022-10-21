@@ -17,7 +17,7 @@
     // Aliases
     "baseUrl": "./app",
     "paths": {
-      "@/routes/*":     ["routes/*"],
+      "@/constants/*":   ["constants/*"],
       "@/components/*": ["components/*"],
       "@/providers/*":  ["providers/*"],
       "@/services/*":   ["services/*"],
@@ -33,6 +33,6 @@
       "@/styles/*":     ["styles/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

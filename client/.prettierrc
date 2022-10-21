@@ -8,7 +8,7 @@
   "arrowParens": "avoid",
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "@/routes/(.*)$",
+    "@/constants/(.*)$",
     "^@/components/(.*)$",
     "^@/types/(.*)$",
     "^@/types$",

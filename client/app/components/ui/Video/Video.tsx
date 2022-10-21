@@ -9,8 +9,8 @@ import { RiDeleteBin2Line } from "react-icons/ri"
 import cn from "classnames"
 
 import Channel from '@/components/ui/Channel'
-import Duration from "./Duration"
-import Statistics from "./Statistics"
+import Duration from "./.old/Duration"
+import Statistics from "./.old/Statistics"
 
 import { VideoProps } from "./Video.interface"
 import styles from './Video.module.scss'

@@ -1,26 +1,26 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 
-interface UseOutsideResult {
-	ref: any
-	isShow: boolean
-	setShow: Dispatch<SetStateAction<boolean>>
-}
+type UseOutsideResult = [
+	ref: any, 
+	isVisible: boolean, 
+	setVisible: Dispatch<SetStateAction<boolean>>
+]
 
 export const useOutside = (initialVisible = false): UseOutsideResult => {
-	const [isShow, setShow] = useState(initialVisible)
+	const [isVisible, setVisible] = useState(initialVisible)
 	const ref = useRef<HTMLElement>(null)
 
-	const handleClickOutside = (event: any) => {
+	const handleClickOutside = (event: any) => {		
 		if (ref.current && !ref.current.contains(event.target)) {
-			setShow(false)
+			setVisible(false)
 		}
 	}
 
-	useEffect(() => {
+	useEffect(() => {		
 		document.addEventListener('click', handleClickOutside, true)
 
 		return document.removeEventListener('click', handleClickOutside, true)
 	})
 
-	return { ref, isShow, setShow }
+	return [ ref, isVisible, setVisible ]
 }

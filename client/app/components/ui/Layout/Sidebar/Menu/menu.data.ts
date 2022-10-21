@@ -10,9 +10,9 @@ export const menu: MenuLinkProps['link'][] = [
 		path: '/'
 	},
 	{ 
-		title: 'Trendings', 
+		title: 'Trending', 
 		icon: HiChartBar, 
-		path: '/trendings' 
+		path: '/trending' 
 	},
 	{ 
 		title: 'My channel', 

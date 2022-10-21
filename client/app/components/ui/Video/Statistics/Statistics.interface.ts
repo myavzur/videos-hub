@@ -1,5 +1,6 @@
 export interface StatisticsProps {
-  views: number;
-  createdAt?: string;
-  color?: 'white'
+  likes: number;
+  duration: number;
+  createdAt: string;
+  direction?: 'column'
 }

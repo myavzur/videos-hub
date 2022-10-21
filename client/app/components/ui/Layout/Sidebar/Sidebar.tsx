@@ -1,12 +1,15 @@
-import { useAuth, useStoreSelector } from '@/hooks'
-import { api } from '@/store/slices/api/api.slice'
-import Link from 'next/link'
 import React from 'react'
+import Link from 'next/link'
+
+import { useAuth } from '@/hooks'
+import Logo from '@/components/ui/Logo'
+
+import { api } from '@/store/slices/api/api.slice'
 
 import Menu from './Menu'
 import { menu } from './Menu/menu.data'
-
 import styles from './Sidebar.module.scss'
+import { BRAND_NAME } from '@/constants/brand.constants'
 
 
 // TODO: Вывести меню через БД???
@@ -19,12 +22,14 @@ const Sidebar: React.FC = () => {
 	return (
 		<aside className={styles.sidebar}>
 			<Link href='/'>
-				<a className={styles['sidebar__logo']}>Бляяяя</a>
+				<a className={styles['sidebar__logo']}>
+					<Logo/>
+				</a>
 			</Link>
 
 			<Menu title='Menu' links={menu} />
 
-			{channel && (
+			{channel?.subscriptions?.length && (
 				<Menu 
 					title='Subscriptions' 
 					links={
@@ -39,7 +44,7 @@ const Sidebar: React.FC = () => {
 				/>
 			)}
 
-			<div className={styles['sidebar__copyright']}>© 2022 RandomTube by myavzur</div>
+			<div className={styles['sidebar__copyright']}>© 2022 {BRAND_NAME} by HandsUp! (myavzur)</div>
 		</aside>
 	)
 }

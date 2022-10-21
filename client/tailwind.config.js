@@ -16,7 +16,7 @@ module.exports = {
           800: '#353340',
           900: '#272532'
         },
-        secondary:  '#6C5ECF',
+        secondary:  '#278BD7',
         clickable: '#FF7652',
         active: '#32A8E2',
       },
@@ -25,10 +25,7 @@ module.exports = {
       //   DEFAULT: '0.5s'
       // },
 
-      boxShadow: {
-        DEFAULT: '0 3px 12px rgba(0, 0, 0, 0.3)',
-        md: '0 3px 12px rgba(0, 0, 0, 0.1)'
-      },
+
 
       // Animations
       keyframes: {
@@ -60,6 +57,7 @@ module.exports = {
       
       // Font sizes
       fontSize: {
+        ['2xs']: '0.7rem',
         xs:    '0.9rem',
         sm:    '1rem',
         tiny:  '1.2rem',
@@ -70,18 +68,5 @@ module.exports = {
         "3xl": '1.9rem'
       }
     },
-  },
-  plugins: [
-    plugin(({addComponents}) => {
-      addComponents({
-        '.block-with-shadow': {
-          display: 'block',
-          boxShadow: 
-            '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
-          animation: 'scaleIn .35s ease-in-out',
-          backgroundColor: '#272532'
-        }
-      })
-    })
-  ],
+  }
 }

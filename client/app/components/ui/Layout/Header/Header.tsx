@@ -4,7 +4,6 @@ import ChannelAvatar from '@/components/ui/Channel/Avatar'
 import { useAuth } from '@/hooks'
 
 import Search from './Search'
-import AuthorizationLinks from './AuthorizationLinks'
 
 import styles from './Header.module.scss'
 
@@ -19,7 +18,7 @@ const Header: React.FC = () => {
 			<div className='text-clickable'>
 				{channel 
 					? <ChannelAvatar channel={channel}/>
-					: <AuthorizationLinks/>
+					: <p> NOT_AUTHORIZED </p>
 				}
 			</div>
 		</header>

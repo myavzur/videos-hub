@@ -1,55 +1,70 @@
+import Channel from "@/components/ui/Channel"
 import Image from "next/image"
 import Link from "next/link"
 import React from "react"
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime"
 
-import Channel from "@/components/ui/Channel"
-import Duration from "@/components/ui/Video/Duration"
-import Statistics from "@/components/ui/Video/Statistics"
-
-import { VideoLargeProps } from "./VideoLarge.interface"
+import { VideoLargeProps } from './VideoLarge.interface'
 import styles from './VideoLarge.module.scss'
 
-const VideoLarge: React.FC<VideoLargeProps> = ({ video }) => {
+import Statistics from "../Statistics";
+import classNames from "classnames";
+
+
+dayjs.extend(relativeTime)
+
+
+const VideoLarge: React.FC<VideoLargeProps> = ({ video, orientation }) => {
   return (
-    <div className={styles['video-large']}>
-      {
-        video.thumbnailPath && (
-          <Image
-            className={styles['video-large__thumbnail']}
-            src={video.thumbnailPath}
-            alt={video.name}
-            layout="fill"
-            priority            
+    <div 
+      className={classNames(
+        styles.video,
+        { [styles[`video--${orientation}`]]: Boolean(orientation) }
+      )}
+    >
+      {video.thumbnailPath && (
+        <Image
+          className={styles.thumbnail}
+          src={video.thumbnailPath}
+          alt={video.name}
+          layout="fill"
+          priority            
+        />
+      )}
+
+
+      <main className={styles.information}>
+        <div className={styles.information__general}>
+          <Statistics 
+            duration={video.duration}
+            likes={video.likes}
+            createdAt={video.createdAt}
+            // direction={(orientation === 'portait') ? 'column' : undefined}
           />
-        )
-      }
 
-      <Duration duration={video.duration} position='bottom-right'/>
+          <Link href={`/videos/${video.id}`}>
+            <a className={styles.information__general_name}>
+              {video.name}
+            </a>
+          </Link>
 
-      <div className={styles['video-large__information']}>
-        <Link href={`/videos/${video.id}`}>
-          <a className={styles['video-large__information-name']}> 
-            {video.name} 
-          </a>
-        </Link>
-
-        {
-          video.channel?.avatarPath && (
-            <Channel.Avatar 
-              channel={video.channel} 
-              color='white' 
-            /> 
-          )
-        }
-
-        <div className={styles['video-large__information-channel-name']}> 
-          {video.channel?.name || 'NO DATA'}  
+          <p className={styles.information__general_description}>
+            {video.description}
+          </p>
         </div>
 
-        <div className={styles['video-large__information-statistics']}>
-          <Statistics views={video.views} createdAt={video.createdAt} color='white' />
+
+        <div className={styles.information__author}>
+          <legend className={styles.information__author_present}>
+            Video by
+          </legend>
+
+          <div className={styles.information__author_name}>
+            <Channel.Name channel={video.channel}/>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }

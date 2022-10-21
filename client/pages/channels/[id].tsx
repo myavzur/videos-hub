@@ -4,14 +4,13 @@ import { GetStaticPaths, GetStaticProps } from "next"
 import { NextPageAuth } from "@/components/providers/AuthProvider/private-route.interface"
 import { ChannelsService } from "@/services/RandomTube"
 
-import Channel, { ChannelProps } from "@/components/pages/Channel"
+import Channel, { ChannelProps } from "@/components/screens/Channel"
 
 const ChannelPage: NextPageAuth<ChannelProps> = ({ channel }) => {
   return (
     <Channel channel={channel}/>
   )
 }
-ChannelPage.isPrivatePage = true
 
 
 export const getStaticPaths: GetStaticPaths = async () => {

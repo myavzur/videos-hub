@@ -3,9 +3,9 @@ import shuffle from 'lodash/shuffle'
 
 import { IVideo } from "@/types/entities"
 import { NextPageAuth } from "@/components/providers/AuthProvider/private-route.interface"
-import { HomeProps } from "@/components/pages/Home"
+import { HomeProps } from "@/components/screens/Home"
 
-import Home from "@/components/pages/Home"
+import Home from "@/components/screens/Home"
 
 import { VideosService } from "@/services/RandomTube"
 

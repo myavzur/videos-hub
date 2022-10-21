@@ -1,13 +1,11 @@
 .sidebar {
   @apply 
-    py-5 
+    py-7 
     px-7;
   width: 18%; // ? Because Layout_content is 82%
 
   &__logo {
-    @apply 
-      text-2xl 
-      font-semibold;
+    @apply text-lg font-semibold;
     color: #fefefe
   } 
 

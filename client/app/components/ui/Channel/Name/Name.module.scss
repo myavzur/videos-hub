@@ -2,8 +2,7 @@
   @apply flex items-center;
 
   .name {
-    @apply text-white;
-    font-weight: 900;
+    @apply text-white font-bold;
   }
 
   .verification_icon {

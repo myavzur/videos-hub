@@ -13,7 +13,7 @@ export default function Document() {
 				<link rel="manifest" href="favicon/site.webmanifest" />
 				<meta name="msapplication-TileColor" content="#253a50" />
 				<meta name="theme-color" content="#253a50" />
-
+        
         <meta name="theme-color" content="#FF7652"/>
         <meta name="msapplication-navbutton-color" content="#FF7652"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="#FF7652"/>

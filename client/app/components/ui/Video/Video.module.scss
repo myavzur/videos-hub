@@ -12,14 +12,13 @@
     @apply p-4;
 
     &-channel-name {
-      @apply font-normal text-gray-500;
+      @apply text-xs text-gray-500;
 
       font-size: 1.15rem;
     }
 
     &-name {
-      @apply text-white font-medium my-2.5;
-      font-size: 1.3rem;
+      @apply text-white text-sm font-medium my-2.5;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2; // 2 columns

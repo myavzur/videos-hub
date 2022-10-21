@@ -1,0 +1,28 @@
+.badge {
+  --shadow-offset: 0.25rem;
+  
+  @apply flex items-center px-1 py-1 text-2xs;
+  border-radius: 0.5rem 0 0.5rem;
+  background: #1C1B26;
+  box-shadow: 
+    var(--shadow-offset)           
+    var(--shadow-offset) 
+    0px 
+    rgba(0, 0, 0, 0.5), 
+
+    calc(var(--shadow-offset) * 2)
+    calc(var(--shadow-offset) * 2)
+    0px 
+    rgba(0, 0, 0, 0.25)
+  ;
+
+  &__icon {
+    @apply text-secondary;
+    margin-right: 0.3rem;
+    font-size: 1.1em;
+  }
+
+  &__label {
+    font-size: 0.95em;
+  }
+}

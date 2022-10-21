@@ -1,6 +1,6 @@
 import { NextPageAuth } from "@/components/providers/AuthProvider/private-route.interface"
 
-import Authentication, { AuthenticationProps } from "@/components/pages/Authentication"
+import Authentication, { AuthenticationProps } from "@/components/screens/Authentication"
 import { GetStaticProps } from "next"
 import { VideosService } from "@/services/RandomTube"
 import { IVideo } from "@/types/entities"
