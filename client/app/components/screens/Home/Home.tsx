@@ -5,8 +5,6 @@ import Layout from '@/components/ui/Layout'
 
 import { HomeProps } from './Home.interface'
 import Discover from './Discover'
-import Modal from '@/components/ui/Modal'
-import { useOutside } from '@/hooks'
 import Heading from '@/components/ui/Heading'
 
 const Home: React.FC<HomeProps> = ({ topVideo, randomVideo, newVideos }) => {
