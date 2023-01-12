@@ -2,28 +2,29 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  poweredByHeader: false, // *  Не будет видно что приложение на Next
+  poweredByHeader: false, // * Hide "X-Powered-By: NEXT" header 
   env: { 
-    NEXT_CLIENT_URL: process.env.NEXT_CLIENT_URL
+    CLIENT_URL: process.env.CLIENT_URL,
+    SERVER_URL: process.env.SERVER_URL,
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID
   },
-  images: { // * Разрешить картинки с этого домена
-    domains: ['localhost']
+  images: { // * Allows images from this domains
+    domains: [process.env.SERVER_URL, "picsum.photos"]
   },
 
-  // * Redirect from {NextS/api/path} to {NestJS/api/path}
+  // * Redirects requests from "www.videoshub.com" to "api.videoshub.com" 
   async rewrites() {
     return [
       {
         source: '/api/:path*', 
-        destination: `${process.env.NEST_SERVER_URL}/api/:path*`
+        destination: `${process.env.SERVER_URL}/api/:path*`
       },
       {
         source: '/uploads/:path*',
-        destination: `${process.env.NEST_SERVER_URL}/uploads/:path*`
+        destination: `${process.env.SERVER_URL}/uploads/:path*`
       }
     ]
   }
 }
-// TODO: Translate
 
 module.exports = nextConfig

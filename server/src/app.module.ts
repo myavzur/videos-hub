@@ -34,8 +34,7 @@ const CWD = process.cwd()
     AuthModule,
     ChannelsModule,
     MediaModule,
-    VideosModule, CommentsModule, 
-    
+    VideosModule, CommentsModule,
   ]
 })
 export class AppModule {}

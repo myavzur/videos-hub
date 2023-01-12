@@ -37,12 +37,17 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ---
 
-## Preview
-
----
 ## Documentation
 
-Данное приложение Next настроенно так, что все запросы для `/api` и `/uploads` на [http://next.frontend/api](#) переадресуются на [http://nest.backend/api](#)
-(папка server)
+Перед запуском данного приложения в файле `C:\Windows\System32\drivers\etc` необходимо добавить следующие строки:
+```bash
+  # Videos hub
+  127.0.0.1 www.videoshub.com # Application Client
+  127.0.0.1 api.videoshub.com # Application Server
+```
 
-![NextConfig](./RM-next-config.png)
+На клиентской части также настроена переадресация для следующих URL-ов соответственно: 
+* [http://www.videoshub.com:3000/api](#)           `->`    [http://api.videoshub.com:5000/api](#)
+* [http://www.videoshub.com:3000/uploads](#)   `->`    [http://api.videoshub.com:5000/uploads](#)
+
+![Client Next Config](./next-config.png)

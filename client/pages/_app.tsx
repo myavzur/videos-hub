@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import type { AppProps } from 'next/app'
 import NextProgressBar from 'nextjs-progressbar'
 
@@ -6,6 +6,7 @@ import PersistedStoreProvider from '@/components/providers/PersistedStoreProvide
 
 import '../app/styles/globals.scss'
 import AuthProvider from '@/components/providers/AuthProvider/AuthProvider'
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,11 +19,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         height={3}
       />
 
-      <PersistedStoreProvider>
-          <AuthProvider Component={Component}>
-            <Component {...pageProps} />
-          </AuthProvider>
-      </PersistedStoreProvider>
+      <GoogleOAuthProvider
+        clientId={process.env.GOOGLE_CLIENT_ID || ''}
+      >
+        <PersistedStoreProvider>
+            <AuthProvider Component={Component}>
+              <Component {...pageProps} />
+            </AuthProvider>
+        </PersistedStoreProvider>
+      </GoogleOAuthProvider>
 
     </React.Fragment>
   )

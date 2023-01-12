@@ -6,13 +6,14 @@ import Layout from '@/components/ui/Layout'
 import { HomeProps } from './Home.interface'
 import Discover from './Discover'
 import Heading from '@/components/ui/Heading'
+import { BRAND_NAME } from '@/constants/brand.constants'
 
 const Home: React.FC<HomeProps> = ({ topVideo, randomVideo, newVideos }) => {
 
 	return (
 		<Layout
 			meta={{
-				title: 'Home',
+				title: BRAND_NAME,
 				description: 'RandomTube home page with most popular and new videos.'
 			}}
 		>

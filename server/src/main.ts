@@ -30,7 +30,7 @@ async function bootstrap() {
     .setVersion('1.0.0')
     .build()
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerOptions)
-  SwaggerModule.setup('api/docs', app, swaggerDocument)
+  SwaggerModule.setup('docs', app, swaggerDocument)
 
 
   // Started
@@ -46,13 +46,13 @@ async function bootstrap() {
 
 
     logger.verbose(`
-      |----------------------------------------------------------|
-      |   🎧 Server listening -> http://${SERVER_HOST}:${SERVER_PORT}           |
-      |----------------------------------------------------------|
-      |   📙 Documentation ->  http://${SERVER_HOST}:${SERVER_PORT}/api/docs    |
-      |----------------------------------------------------------|
-      |            ⏲️  Launched: ${hour}:${minutes} / ${day}.${month}.${year}               |
-      |----------------------------------------------------------|
+      |----------------------------------------------------------------------|
+      |       🎧 Server listening -> http://${SERVER_HOST}:${SERVER_PORT}           |
+      |----------------------------------------------------------------------|
+      |      📙 Documentation -> http://${SERVER_HOST}:${SERVER_PORT}/docs          |
+      |----------------------------------------------------------------------|
+      |                   ⏲️  Launched: ${hour}:${minutes} / ${day}.${month}.${year}                    |
+      |----------------------------------------------------------------------|
     `)
   });
 }

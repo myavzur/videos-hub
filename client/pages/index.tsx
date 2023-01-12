@@ -21,23 +21,29 @@ export const getStaticProps: GetStaticProps = async () => {
     const { data: newVideos } = await VideosService.getAll()
     const { data: topVideos } = await VideosService.getMostPopular()
     
+    let randomVideo: IVideo | null = null;
+    
+    if (topVideos[0]?.id) {
+      randomVideo = shuffle(
+        newVideos.filter( video => video.id !== topVideos[0].id )
+        )[0];
+      }
+    else {
+      randomVideo = shuffle(newVideos)[0];
+    }
+    
     return {
       props: {
+        topVideo: topVideos[0] || null,
+        randomVideo,
         newVideos,
-        topVideo: topVideos[0],
-        randomVideo: 
-          shuffle(
-            newVideos.filter( video => video.id !== topVideos[0].id )
-          )[0]
-          ||
-          ({} as IVideo)
       } as HomeProps
     }
   }
   catch (e) {
-    console.log(`%cCould't call server from HomePage! ${e}`, 'color: red')
+    console.error(`%cCould't call server from HomePage! ${e}`, 'color: red')
     return {
-      props: {}
+      props: {} as HomeProps
     }
   }
 }

@@ -1,1 +1,1 @@
-export const BRAND_NAME = 'VideoHub'
+export const BRAND_NAME = 'VideosHub'
