@@ -64,7 +64,6 @@ export class AuthService {
 
 
 
-
   private async setSession(session: SessionApp, channel: Channel) {
     session.channel = {
       id: channel.id,

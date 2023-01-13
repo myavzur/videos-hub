@@ -2,6 +2,7 @@ import Field from "@/components/ui/Field"
 
 import { useAuth, useStoreDispatch } from "@/hooks"
 import { login } from "@/store/slices/channel/channel.actions"
+import { CredentialResponse, GoogleLogin } from "@react-oauth/google"
 import Link from "next/link"
 import { useRouter } from "next/router"
 import React, { useEffect } from "react"
@@ -43,6 +44,14 @@ const SignIn: React.FC = () => {
 
   const handleSignIn: SubmitHandler<FormValues> = (data) => {
     dispatch(login(data))
+  }
+
+  const handleGoogleSuccess = (credentialResponse: CredentialResponse) => {
+    console.log(credentialResponse)
+  }
+
+  const handleGoogleError = () => {
+    console.log('Еба)')
   }
 
   return (
@@ -104,6 +113,19 @@ const SignIn: React.FC = () => {
           <a className={styles.form__transfer_link}>Sign Up</a>
         </Link>
       </p>
+
+      <GoogleLogin 
+        useOneTap
+        onSuccess={handleGoogleSuccess}
+        theme="filled_black"
+        ux_mode="popup"
+        context="signin"
+        text="signin_with"
+        onError={handleGoogleError}
+        shape="rectangular"
+        native_callback={(res) => console.log(res)}
+        
+      />
     </form>
   )
 }
